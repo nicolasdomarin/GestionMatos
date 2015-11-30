@@ -1,0 +1,218 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="gestion_materielModel1" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="gestion_materielEntities1" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="batiment" EntityType="gestion_materielModel1.batiment" />
+    <EntitySet Name="client" EntityType="gestion_materielModel1.client" />
+    <EntitySet Name="etage" EntityType="gestion_materielModel1.etage" />
+    <EntitySet Name="intervention" EntityType="gestion_materielModel1.intervention" />
+    <EntitySet Name="materiel" EntityType="gestion_materielModel1.materiel" />
+    <EntitySet Name="salle" EntityType="gestion_materielModel1.salle" />
+    <EntitySet Name="site" EntityType="gestion_materielModel1.site" />
+    <EntitySet Name="sysdiagrams" EntityType="gestion_materielModel1.sysdiagrams" />
+    <EntitySet Name="type" EntityType="gestion_materielModel1.type" />
+    <AssociationSet Name="FK_batiment_client" Association="gestion_materielModel1.FK_batiment_client">
+      <End Role="client" EntitySet="client" />
+      <End Role="batiment" EntitySet="batiment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_batiment_site" Association="gestion_materielModel1.FK_batiment_site">
+      <End Role="site" EntitySet="site" />
+      <End Role="batiment" EntitySet="batiment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_etage_batiment" Association="gestion_materielModel1.FK_etage_batiment">
+      <End Role="batiment" EntitySet="batiment" />
+      <End Role="etage" EntitySet="etage" />
+    </AssociationSet>
+    <AssociationSet Name="FK_salle_etage" Association="gestion_materielModel1.FK_salle_etage">
+      <End Role="etage" EntitySet="etage" />
+      <End Role="salle" EntitySet="salle" />
+    </AssociationSet>
+    <AssociationSet Name="FK_intervention_materiel" Association="gestion_materielModel1.FK_intervention_materiel">
+      <End Role="materiel" EntitySet="materiel" />
+      <End Role="intervention" EntitySet="intervention" />
+    </AssociationSet>
+    <AssociationSet Name="FK_intervention_salle" Association="gestion_materielModel1.FK_intervention_salle">
+      <End Role="salle" EntitySet="salle" />
+      <End Role="intervention" EntitySet="intervention" />
+    </AssociationSet>
+    <AssociationSet Name="FK_materiel_type" Association="gestion_materielModel1.FK_materiel_type">
+      <End Role="type" EntitySet="type" />
+      <End Role="materiel" EntitySet="materiel" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="batiment">
+    <Key>
+      <PropertyRef Name="id_batiment" />
+    </Key>
+    <Property Name="id_batiment" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_site" Type="Int32" Nullable="false" />
+    <Property Name="id_client" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="client" Relationship="gestion_materielModel1.FK_batiment_client" FromRole="batiment" ToRole="client" />
+    <NavigationProperty Name="site" Relationship="gestion_materielModel1.FK_batiment_site" FromRole="batiment" ToRole="site" />
+    <NavigationProperty Name="etage" Relationship="gestion_materielModel1.FK_etage_batiment" FromRole="batiment" ToRole="etage" />
+  </EntityType>
+  <EntityType Name="client">
+    <Key>
+      <PropertyRef Name="id_client" />
+    </Key>
+    <Property Name="id_client" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="batiment" Relationship="gestion_materielModel1.FK_batiment_client" FromRole="client" ToRole="batiment" />
+  </EntityType>
+  <EntityType Name="etage">
+    <Key>
+      <PropertyRef Name="id_etage" />
+    </Key>
+    <Property Name="id_etage" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_batiment" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="batiment" Relationship="gestion_materielModel1.FK_etage_batiment" FromRole="etage" ToRole="batiment" />
+    <NavigationProperty Name="salle" Relationship="gestion_materielModel1.FK_salle_etage" FromRole="etage" ToRole="salle" />
+  </EntityType>
+  <EntityType Name="intervention">
+    <Key>
+      <PropertyRef Name="id_intervention" />
+    </Key>
+    <Property Name="id_intervention" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="date_plannifiee" Type="DateTime" Precision="0" />
+    <Property Name="date_realisee" Type="DateTime" Precision="0" />
+    <Property Name="commentaires" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="id_materiel" Type="Int32" Nullable="false" />
+    <Property Name="id_salle" Type="Int32" Nullable="false" />
+    <Property Name="statut" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="materiel" Relationship="gestion_materielModel1.FK_intervention_materiel" FromRole="intervention" ToRole="materiel" />
+    <NavigationProperty Name="salle" Relationship="gestion_materielModel1.FK_intervention_salle" FromRole="intervention" ToRole="salle" />
+  </EntityType>
+  <EntityType Name="materiel">
+    <Key>
+      <PropertyRef Name="id_materiel" />
+    </Key>
+    <Property Name="id_materiel" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_client" Type="Int32" Nullable="false" />
+    <Property Name="id_intervention" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="description" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="id_type" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="intervention" Relationship="gestion_materielModel1.FK_intervention_materiel" FromRole="materiel" ToRole="intervention" />
+    <NavigationProperty Name="type" Relationship="gestion_materielModel1.FK_materiel_type" FromRole="materiel" ToRole="type" />
+  </EntityType>
+  <EntityType Name="salle">
+    <Key>
+      <PropertyRef Name="id_salle" />
+    </Key>
+    <Property Name="id_salle" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_etage" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="etage" Relationship="gestion_materielModel1.FK_salle_etage" FromRole="salle" ToRole="etage" />
+    <NavigationProperty Name="intervention" Relationship="gestion_materielModel1.FK_intervention_salle" FromRole="salle" ToRole="intervention" />
+  </EntityType>
+  <EntityType Name="site">
+    <Key>
+      <PropertyRef Name="id_site" />
+    </Key>
+    <Property Name="id_site" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="nom" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="batiment" Relationship="gestion_materielModel1.FK_batiment_site" FromRole="site" ToRole="batiment" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="type">
+    <Key>
+      <PropertyRef Name="id_type" />
+    </Key>
+    <Property Name="id_type" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="MTBF" Type="Int32" />
+    <Property Name="nom" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="type_id" Type="Int32" />
+    <NavigationProperty Name="materiel" Relationship="gestion_materielModel1.FK_materiel_type" FromRole="type" ToRole="materiel" />
+  </EntityType>
+  <Association Name="FK_batiment_client">
+    <End Role="client" Type="gestion_materielModel1.client" Multiplicity="1" />
+    <End Role="batiment" Type="gestion_materielModel1.batiment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="client">
+        <PropertyRef Name="id_client" />
+      </Principal>
+      <Dependent Role="batiment">
+        <PropertyRef Name="id_client" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_batiment_site">
+    <End Role="site" Type="gestion_materielModel1.site" Multiplicity="1" />
+    <End Role="batiment" Type="gestion_materielModel1.batiment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="site">
+        <PropertyRef Name="id_site" />
+      </Principal>
+      <Dependent Role="batiment">
+        <PropertyRef Name="id_site" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_etage_batiment">
+    <End Role="batiment" Type="gestion_materielModel1.batiment" Multiplicity="1" />
+    <End Role="etage" Type="gestion_materielModel1.etage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="batiment">
+        <PropertyRef Name="id_batiment" />
+      </Principal>
+      <Dependent Role="etage">
+        <PropertyRef Name="id_batiment" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_salle_etage">
+    <End Role="etage" Type="gestion_materielModel1.etage" Multiplicity="1" />
+    <End Role="salle" Type="gestion_materielModel1.salle" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="etage">
+        <PropertyRef Name="id_etage" />
+      </Principal>
+      <Dependent Role="salle">
+        <PropertyRef Name="id_salle" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_intervention_materiel">
+    <End Role="materiel" Type="gestion_materielModel1.materiel" Multiplicity="1" />
+    <End Role="intervention" Type="gestion_materielModel1.intervention" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="materiel">
+        <PropertyRef Name="id_materiel" />
+      </Principal>
+      <Dependent Role="intervention">
+        <PropertyRef Name="id_materiel" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_intervention_salle">
+    <End Role="salle" Type="gestion_materielModel1.salle" Multiplicity="1" />
+    <End Role="intervention" Type="gestion_materielModel1.intervention" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="salle">
+        <PropertyRef Name="id_salle" />
+      </Principal>
+      <Dependent Role="intervention">
+        <PropertyRef Name="id_salle" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_materiel_type">
+    <End Role="type" Type="gestion_materielModel1.type" Multiplicity="1" />
+    <End Role="materiel" Type="gestion_materielModel1.materiel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="type">
+        <PropertyRef Name="id_type" />
+      </Principal>
+      <Dependent Role="materiel">
+        <PropertyRef Name="id_type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
