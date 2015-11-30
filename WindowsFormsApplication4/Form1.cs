@@ -17,7 +17,7 @@ namespace WindowsFormsApplication4
             InitializeComponent();
         }
 
-        public string myConnectionString = @"Server=NICO-PC\SQLEXPRESS;DataBase=gestion_materiel;Integrated Security=SSPI;Connect Timeout=5";
+        public string myConnectionString = @"Server=GUETTA-PC\SQLEXPRESS;DataBase=gestion_materiel;Integrated Security=SSPI;Connect Timeout=5";
 
 
 

@@ -20,3 +20,14 @@ C:\Users\nico\Downloads\GESTION_MATERIEL\GESTION_MATERIEL\WindowsFormsApplicatio
 C:\Users\nico\Downloads\GESTION_MATERIEL\GESTION_MATERIEL\WindowsFormsApplication4\WindowsFormsApplication4\obj\Debug\WindowsFormsApplication4.Form1.resources
 C:\Users\nico\Downloads\GESTION_MATERIEL\GESTION_MATERIEL\WindowsFormsApplication4\WindowsFormsApplication4\obj\Debug\WindowsFormsApplication4.Properties.Resources.resources
 C:\Users\nico\Downloads\GESTION_MATERIEL\GESTION_MATERIEL\WindowsFormsApplication4\WindowsFormsApplication4\obj\Debug\gestion_materiel.csproj.GenerateResource.Cache
+C:\Users\guetta\Desktop\gestion matos\GestionMatos\WindowsFormsApplication4\bin\Debug\WindowsFormsApplication4.exe.config
+C:\Users\guetta\Desktop\gestion matos\GestionMatos\WindowsFormsApplication4\obj\Debug\WindowsFormsApplication4.exe
+C:\Users\guetta\Desktop\gestion matos\GestionMatos\WindowsFormsApplication4\obj\Debug\WindowsFormsApplication4.pdb
+C:\Users\guetta\Desktop\gestion matos\GestionMatos\WindowsFormsApplication4\bin\Debug\WindowsFormsApplication4.exe
+C:\Users\guetta\Desktop\gestion matos\GestionMatos\WindowsFormsApplication4\bin\Debug\WindowsFormsApplication4.pdb
+C:\Users\guetta\Desktop\gestion matos\GestionMatos\WindowsFormsApplication4\bin\Debug\EntityFramework.dll
+C:\Users\guetta\Desktop\gestion matos\GestionMatos\WindowsFormsApplication4\bin\Debug\EntityFramework.xml
+C:\Users\guetta\Desktop\gestion matos\GestionMatos\WindowsFormsApplication4\obj\Debug\gestion_materiel.csprojResolveAssemblyReference.cache
+C:\Users\guetta\Desktop\gestion matos\GestionMatos\WindowsFormsApplication4\obj\Debug\WindowsFormsApplication4.Form1.resources
+C:\Users\guetta\Desktop\gestion matos\GestionMatos\WindowsFormsApplication4\obj\Debug\WindowsFormsApplication4.Properties.Resources.resources
+C:\Users\guetta\Desktop\gestion matos\GestionMatos\WindowsFormsApplication4\obj\Debug\gestion_materiel.csproj.GenerateResource.Cache
