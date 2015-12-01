@@ -16,6 +16,7 @@ C:\Users\nico\Desktop\gestionMateriels\gestionMatos\gestionMatos\obj\Debug\gesti
 C:\Users\nico\Desktop\gestionMateriels\gestionMatos\gestionMatos\obj\Debug\gestionMatos.Form1.resources
 C:\Users\nico\Desktop\gestionMateriels\gestionMatos\gestionMatos\obj\Debug\gestionMatos.Properties.Resources.resources
 C:\Users\nico\Desktop\gestionMateriels\gestionMatos\gestionMatos\obj\Debug\gestionMatos.csproj.GenerateResource.Cache
+<<<<<<< Updated upstream
 C:\Users\nico\Documents\GitHub\GestionMateriel\gestionMatos\bin\Debug\gestionMatos.exe.config
 C:\Users\nico\Documents\GitHub\GestionMateriel\gestionMatos\obj\Debug\gestionMatos.exe
 C:\Users\nico\Documents\GitHub\GestionMateriel\gestionMatos\obj\Debug\gestionMatos.pdb
@@ -25,3 +26,14 @@ C:\Users\nico\Documents\GitHub\GestionMateriel\gestionMatos\obj\Debug\gestionMat
 C:\Users\nico\Documents\GitHub\GestionMateriel\gestionMatos\obj\Debug\gestionMatos.Form1.resources
 C:\Users\nico\Documents\GitHub\GestionMateriel\gestionMatos\obj\Debug\gestionMatos.Properties.Resources.resources
 C:\Users\nico\Documents\GitHub\GestionMateriel\gestionMatos\obj\Debug\gestionMatos.csproj.GenerateResource.Cache
+=======
+C:\Users\nico\Desktop\GestionMatos\gestionMatos\bin\Debug\gestionMatos.exe.config
+C:\Users\nico\Desktop\GestionMatos\gestionMatos\obj\Debug\gestionMatos.exe
+C:\Users\nico\Desktop\GestionMatos\gestionMatos\obj\Debug\gestionMatos.pdb
+C:\Users\nico\Desktop\GestionMatos\gestionMatos\bin\Debug\gestionMatos.exe
+C:\Users\nico\Desktop\GestionMatos\gestionMatos\bin\Debug\gestionMatos.pdb
+C:\Users\nico\Desktop\GestionMatos\gestionMatos\obj\Debug\gestionMatos.csprojResolveAssemblyReference.cache
+C:\Users\nico\Desktop\GestionMatos\gestionMatos\obj\Debug\gestionMatos.Form1.resources
+C:\Users\nico\Desktop\GestionMatos\gestionMatos\obj\Debug\gestionMatos.Properties.Resources.resources
+C:\Users\nico\Desktop\GestionMatos\gestionMatos\obj\Debug\gestionMatos.csproj.GenerateResource.Cache
+>>>>>>> Stashed changes

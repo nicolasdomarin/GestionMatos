@@ -14,7 +14,6 @@ namespace gestionMatos
     {
         public Form1()
         {   
-            int bonsoir;
             InitializeComponent();
         }
     }

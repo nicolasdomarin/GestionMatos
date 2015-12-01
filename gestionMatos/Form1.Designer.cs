@@ -72,7 +72,29 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.button4 = new System.Windows.Forms.Button();
             this.onglet_materiels = new System.Windows.Forms.TabPage();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.id_materiel = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.name_mat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.type = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.materiel_client = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.onglet_configuration = new System.Windows.Forms.TabPage();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.etage = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Batiment = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Site = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1Onglets.SuspendLayout();
             this.onglet_accueil.SuspendLayout();
             this.groupBoxAccueilIntervention.SuspendLayout();
@@ -81,6 +103,9 @@
             this.onglet_interventions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.groupBox1.SuspendLayout();
+            this.onglet_materiels.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1Onglets
@@ -89,10 +114,11 @@
             this.tabControl1Onglets.Controls.Add(this.onglet_clients);
             this.tabControl1Onglets.Controls.Add(this.onglet_interventions);
             this.tabControl1Onglets.Controls.Add(this.onglet_materiels);
+            this.tabControl1Onglets.Controls.Add(this.onglet_configuration);
             this.tabControl1Onglets.Location = new System.Drawing.Point(12, 12);
             this.tabControl1Onglets.Name = "tabControl1Onglets";
             this.tabControl1Onglets.SelectedIndex = 0;
-            this.tabControl1Onglets.Size = new System.Drawing.Size(807, 509);
+            this.tabControl1Onglets.Size = new System.Drawing.Size(1011, 569);
             this.tabControl1Onglets.TabIndex = 0;
             // 
             // onglet_accueil
@@ -419,7 +445,7 @@
             this.groupBox1.Size = new System.Drawing.Size(544, 182);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            this.groupBox1.Text = "Formulaire";
             // 
             // label11
             // 
@@ -496,19 +522,211 @@
             // 
             // onglet_materiels
             // 
+            this.onglet_materiels.Controls.Add(this.button7);
+            this.onglet_materiels.Controls.Add(this.button6);
+            this.onglet_materiels.Controls.Add(this.button5);
+            this.onglet_materiels.Controls.Add(this.label13);
+            this.onglet_materiels.Controls.Add(this.label12);
+            this.onglet_materiels.Controls.Add(this.dataGridView3);
+            this.onglet_materiels.Controls.Add(this.comboBox1);
+            this.onglet_materiels.Controls.Add(this.groupBox2);
             this.onglet_materiels.Location = new System.Drawing.Point(4, 22);
             this.onglet_materiels.Name = "onglet_materiels";
             this.onglet_materiels.Padding = new System.Windows.Forms.Padding(3);
-            this.onglet_materiels.Size = new System.Drawing.Size(799, 483);
+            this.onglet_materiels.Size = new System.Drawing.Size(1003, 543);
             this.onglet_materiels.TabIndex = 3;
             this.onglet_materiels.Text = "Matériels";
             this.onglet_materiels.UseVisualStyleBackColor = true;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(44, 93);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(85, 13);
+            this.label13.TabIndex = 4;
+            this.label13.Text = "Type de matériel";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(347, 33);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(49, 13);
+            this.label12.TabIndex = 3;
+            this.label12.Text = "Matériels";
+            // 
+            // dataGridView3
+            // 
+            this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.id_materiel,
+            this.name_mat,
+            this.type,
+            this.materiel_client,
+            this.etage,
+            this.Batiment,
+            this.Site});
+            this.dataGridView3.Location = new System.Drawing.Point(6, 117);
+            this.dataGridView3.Name = "dataGridView3";
+            this.dataGridView3.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dataGridView3.Size = new System.Drawing.Size(743, 187);
+            this.dataGridView3.TabIndex = 2;
+            // 
+            // id_materiel
+            // 
+            this.id_materiel.Frozen = true;
+            this.id_materiel.HeaderText = "ID";
+            this.id_materiel.Name = "id_materiel";
+            // 
+            // name_mat
+            // 
+            this.name_mat.Frozen = true;
+            this.name_mat.HeaderText = "Nom";
+            this.name_mat.Name = "name_mat";
+            // 
+            // type
+            // 
+            this.type.Frozen = true;
+            this.type.HeaderText = "Type Matériel";
+            this.type.Name = "type";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(197, 90);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(199, 21);
+            this.comboBox1.TabIndex = 1;
+            // 
+            // materiel_client
+            // 
+            this.materiel_client.HeaderText = "Client";
+            this.materiel_client.Name = "materiel_client";
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(828, 117);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(75, 23);
+            this.button5.TabIndex = 5;
+            this.button5.Text = "Ajouter";
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(828, 197);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(75, 23);
+            this.button6.TabIndex = 6;
+            this.button6.Text = "Modifier";
+            this.button6.UseVisualStyleBackColor = true;
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(828, 281);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(75, 23);
+            this.button7.TabIndex = 7;
+            this.button7.Text = "Supprimer";
+            this.button7.UseVisualStyleBackColor = true;
+            // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(571, 95);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(75, 23);
+            this.button8.TabIndex = 8;
+            this.button8.Text = "Valider";
+            this.button8.UseVisualStyleBackColor = true;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.label16);
+            this.groupBox2.Controls.Add(this.comboBox3);
+            this.groupBox2.Controls.Add(this.comboBox2);
+            this.groupBox2.Controls.Add(this.label15);
+            this.groupBox2.Controls.Add(this.label14);
+            this.groupBox2.Controls.Add(this.button8);
+            this.groupBox2.Location = new System.Drawing.Point(7, 327);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(742, 182);
+            this.groupBox2.TabIndex = 9;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Formulaire";
+            // 
+            // onglet_configuration
+            // 
+            this.onglet_configuration.Location = new System.Drawing.Point(4, 22);
+            this.onglet_configuration.Name = "onglet_configuration";
+            this.onglet_configuration.Padding = new System.Windows.Forms.Padding(3);
+            this.onglet_configuration.Size = new System.Drawing.Size(799, 483);
+            this.onglet_configuration.TabIndex = 4;
+            this.onglet_configuration.Text = "Configuration";
+            this.onglet_configuration.UseVisualStyleBackColor = true;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(24, 41);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(69, 13);
+            this.label14.TabIndex = 9;
+            this.label14.Text = "Nom Matériel";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(190, 41);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(33, 13);
+            this.label15.TabIndex = 10;
+            this.label15.Text = "Client";
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(150, 57);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(121, 21);
+            this.comboBox2.TabIndex = 11;
+            // 
+            // comboBox3
+            // 
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Location = new System.Drawing.Point(353, 57);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(121, 21);
+            this.comboBox3.TabIndex = 12;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(389, 38);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(41, 13);
+            this.label16.TabIndex = 13;
+            this.label16.Text = "label16";
+            // 
+            // etage
+            // 
+            this.etage.HeaderText = "Etage";
+            this.etage.Name = "etage";
+            // 
+            // Batiment
+            // 
+            this.Batiment.HeaderText = "Bâtiment";
+            this.Batiment.Name = "Batiment";
+            // 
+            // Site
+            // 
+            this.Site.HeaderText = "Site";
+            this.Site.Name = "Site";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(821, 523);
+            this.ClientSize = new System.Drawing.Size(1035, 593);
             this.Controls.Add(this.tabControl1Onglets);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -525,6 +743,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.onglet_materiels.ResumeLayout(false);
+            this.onglet_materiels.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -576,6 +799,28 @@
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.DataGridView dataGridView3;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id_materiel;
+        private System.Windows.Forms.DataGridViewTextBoxColumn name_mat;
+        private System.Windows.Forms.DataGridViewTextBoxColumn type;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn materiel_client;
+        private System.Windows.Forms.DataGridViewTextBoxColumn etage;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Batiment;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Site;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TabPage onglet_configuration;
     }
 }
 
