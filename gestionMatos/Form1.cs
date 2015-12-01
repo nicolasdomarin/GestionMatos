@@ -16,5 +16,15 @@ namespace gestionMatos
         {   
             InitializeComponent();
         }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            tabControl1Onglets.SelectTab(onglet_interventions);
+        }
+
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            tabControl1Onglets.SelectTab(onglet_interventions);
+        }
     }
 }
