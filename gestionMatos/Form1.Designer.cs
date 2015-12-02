@@ -45,7 +45,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGrid_Listing_Client = new System.Windows.Forms.DataGridView();
             this.id_client = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Denomination = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.onglet_interventions = new System.Windows.Forms.TabPage();
@@ -109,7 +109,7 @@
             this.onglet_accueil.SuspendLayout();
             this.groupBoxAccueilIntervention.SuspendLayout();
             this.onglet_clients.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGrid_Listing_Client)).BeginInit();
             this.onglet_interventions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -259,7 +259,7 @@
             this.onglet_clients.Controls.Add(this.label6);
             this.onglet_clients.Controls.Add(this.textBox1);
             this.onglet_clients.Controls.Add(this.label5);
-            this.onglet_clients.Controls.Add(this.dataGridView1);
+            this.onglet_clients.Controls.Add(this.dataGrid_Listing_Client);
             this.onglet_clients.Location = new System.Drawing.Point(4, 22);
             this.onglet_clients.Name = "onglet_clients";
             this.onglet_clients.Padding = new System.Windows.Forms.Padding(3);
@@ -294,19 +294,19 @@
             this.label5.TabIndex = 1;
             this.label5.Text = "Clients";
             // 
-            // dataGridView1
+            // dataGrid_Listing_Client
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGrid_Listing_Client.AllowUserToAddRows = false;
+            this.dataGrid_Listing_Client.AllowUserToDeleteRows = false;
+            this.dataGrid_Listing_Client.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGrid_Listing_Client.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id_client,
             this.Denomination});
-            this.dataGridView1.Location = new System.Drawing.Point(130, 139);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(243, 351);
-            this.dataGridView1.TabIndex = 0;
+            this.dataGrid_Listing_Client.Location = new System.Drawing.Point(130, 139);
+            this.dataGrid_Listing_Client.Name = "dataGrid_Listing_Client";
+            this.dataGrid_Listing_Client.ReadOnly = true;
+            this.dataGrid_Listing_Client.Size = new System.Drawing.Size(243, 351);
+            this.dataGrid_Listing_Client.TabIndex = 0;
             // 
             // id_client
             // 
@@ -601,8 +601,6 @@
             // 
             // dataGridView3
             // 
-            this.dataGridView3.AllowUserToAddRows = false;
-            this.dataGridView3.AllowUserToDeleteRows = false;
             this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id_materiel,
             this.name_mat,
@@ -851,7 +849,7 @@
             this.groupBoxAccueilIntervention.PerformLayout();
             this.onglet_clients.ResumeLayout(false);
             this.onglet_clients.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGrid_Listing_Client)).EndInit();
             this.onglet_interventions.ResumeLayout(false);
             this.onglet_interventions.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
@@ -887,7 +885,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.TabPage onglet_clients;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGrid_Listing_Client;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_client;
         private System.Windows.Forms.DataGridViewTextBoxColumn Denomination;
         private System.Windows.Forms.Label label6;
