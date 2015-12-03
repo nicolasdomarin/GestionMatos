@@ -13,10 +13,10 @@ namespace gestionMatos
     public partial class Form1 : Form
     {
 
-        static string MyConnectionString = "Data Source=NICO-PC\\SQLEXPRESS;Initial Catalog=gestion_materiel;Integrated Security=True";
+        static string MyConnectionString = "Data Source=NICOPC\\SQLEXPRESS;Initial Catalog=gestion_materiel;Integrated Security=True";
         static SqlConnection connection = new SqlConnection(MyConnectionString);
         static SqlCommand cmd = connection.CreateCommand();
-
+        bool isModif = false;
         public Form1()
         {
             InitializeComponent();//Fonction appelée en 1ère
@@ -28,6 +28,7 @@ namespace gestionMatos
             client_initialize();//initialisation du listing des clients
             materiel_initialize();
             intervention_initialize();
+            accueil_initialize();
 
         }
 
@@ -67,31 +68,7 @@ namespace gestionMatos
 
 
 
-        private void client_initialize()
-        {
 
-            try
-            {
-                DataSet1TableAdapters.clientTableAdapter clientAdaptater = new DataSet1TableAdapters.clientTableAdapter();
-                DataSet1.clientDataTable tab1 = new DataSet1.clientDataTable();
-                clientAdaptater.Fill(tab1);
-             
-                int numRow = 0;
-        
-                foreach (DataSet1.clientRow Row in tab1.Rows)
-                {
-                 
-                    dataGrid_Listing_Client.Rows.Add(); 
-                    dataGrid_Listing_Client.Rows[numRow].Cells[0].Value = Row.id_client;
-                    dataGrid_Listing_Client.Rows[numRow].Cells[1].Value = Row.name;
-                    numRow++;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -183,24 +160,24 @@ namespace gestionMatos
             try
             {
 
-     
-                    ListItem item = (ListItem)comboBox1.SelectedItem;
-                    cmd.CommandText = "SELECT materiel.id_materiel AS 'ID', materiel.name AS 'Nom Materiel', type.nom AS 'Type Materiel',client.name AS 'Nom Client',  salle.nom_salle AS 'Salle' , etage.nom_etage AS 'Etage', batiment.nom_batiment AS 'Batiment', site.nom AS 'Site' FROM materiel " +
-                    "INNER JOIN type ON materiel.id_type = type.id_type " +
-                    "INNER JOIN client ON materiel.id_client = client.id_client " +
-                    "INNER JOIN intervention ON materiel.id_materiel = intervention.id_materiel " +
-                    "INNER JOIN salle ON intervention.id_salle = salle.id_salle " +
-                    "INNER JOIN etage ON salle.id_salle = etage.id_etage " +
-                    "INNER JOIN dbo.batiment ON batiment.id_batiment = etage.id_batiment " +
-                    "INNER JOIN dbo.site ON site.id_site = batiment.id_site WHERE materiel.id_type = " + item.ID;
+
+                ListItem item = (ListItem)comboBox1.SelectedItem;
+                cmd.CommandText = "SELECT materiel.id_materiel AS 'ID', materiel.name AS 'Nom Materiel', type.nom AS 'Type Materiel',client.name AS 'Nom Client',  salle.nom_salle AS 'Salle' , etage.nom_etage AS 'Etage', batiment.nom_batiment AS 'Batiment', site.nom AS 'Site' FROM materiel " +
+                "INNER JOIN type ON materiel.id_type = type.id_type " +
+                "INNER JOIN client ON materiel.id_client = client.id_client " +
+                "INNER JOIN intervention ON materiel.id_materiel = intervention.id_materiel " +
+                "INNER JOIN salle ON intervention.id_salle = salle.id_salle " +
+                "INNER JOIN etage ON salle.id_salle = etage.id_etage " +
+                "INNER JOIN dbo.batiment ON batiment.id_batiment = etage.id_batiment " +
+                "INNER JOIN dbo.site ON site.id_site = batiment.id_site WHERE materiel.id_type = " + item.ID;
 
 
-                    SqlDataAdapter adap = new SqlDataAdapter(cmd);
-                    DataSet ds = new DataSet();
-                    adap.Fill(ds);
-                    dataGrid_Listing_Materiel.ReadOnly = true;
-                    dataGrid_Listing_Materiel.DataSource = ds.Tables[0].DefaultView;
-               
+                SqlDataAdapter adap = new SqlDataAdapter(cmd);
+                DataSet ds = new DataSet();
+                adap.Fill(ds);
+                dataGrid_Listing_Materiel.ReadOnly = true;
+                dataGrid_Listing_Materiel.DataSource = ds.Tables[0].DefaultView;
+
 
             }
             catch (Exception ex)
@@ -259,7 +236,6 @@ namespace gestionMatos
             MessageBox.Show("Materiel crée avec succès");
             FillDataViewGrid();
             formFieldNomMateriel.Text = "";
-            //materielAdaptater.InsertMateriel(tab1,id_materiel,id_client,id_intervention,name_materiel,description , id_type);
 
         }
 
@@ -305,8 +281,8 @@ namespace gestionMatos
 
             try
             {
-        
-                if ( formFieldBatiment.SelectedItem == "") return;
+
+                if (formFieldBatiment.SelectedItem == "") return;
 
                 ListItem item = (ListItem)formFieldBatiment.SelectedItem;
                 DataSet1TableAdapters.etageTableAdapter batimentAdaptater = new DataSet1TableAdapters.etageTableAdapter();
@@ -371,7 +347,7 @@ namespace gestionMatos
         {
             addButtonMateriel.Enabled = true;
             this.formFieldNomMateriel.Text = "";
-         }
+        }
 
         private void deleteButtonMateriel_Click_1(object sender, EventArgs e)
         {
@@ -379,16 +355,16 @@ namespace gestionMatos
             DataGridViewRow selectedRow = dataGrid_Listing_Materiel.Rows[selectedrowindex];
             String idMat = Convert.ToString(selectedRow.Cells[0].Value);
 
-                SqlCommand cmd2 = connection.CreateCommand();
-                cmd2.CommandText = "delete from intervention where id_materiel = " + idMat;
-                SqlDataAdapter adap = new SqlDataAdapter(cmd2);
-                DataSet ds = new DataSet();
-                adap.Fill(ds);
+            SqlCommand cmd2 = connection.CreateCommand();
+            cmd2.CommandText = "delete from intervention where id_materiel = " + idMat;
+            SqlDataAdapter adap = new SqlDataAdapter(cmd2);
+            DataSet ds = new DataSet();
+            adap.Fill(ds);
 
-                cmd.CommandText = "delete from materiel where id_materiel = " + idMat;
-                SqlDataAdapter adap2 = new SqlDataAdapter(cmd);
-                DataSet ds2 = new DataSet();
-                adap2.Fill(ds2);
+            cmd.CommandText = "delete from materiel where id_materiel = " + idMat;
+            SqlDataAdapter adap2 = new SqlDataAdapter(cmd);
+            DataSet ds2 = new DataSet();
+            adap2.Fill(ds2);
 
             FillDataViewGrid();
             MessageBox.Show("materiel supprimée avec succès");
@@ -420,11 +396,11 @@ namespace gestionMatos
                 string description = "";
                 ListItem type = (ListItem)formFieldTypeMateriel.SelectedItem;
 
-                cmd.CommandText = "UPDATE materiel SET id_client ="+ client.ID+", name = @name, description = @description, id_type = "+type.ID
-                +" WHERE id_materiel = " + idMat;
+                cmd.CommandText = "UPDATE materiel SET id_client =" + client.ID + ", name = @name, description = @description, id_type = " + type.ID
+                + " WHERE id_materiel = " + idMat;
                 cmd.Parameters.AddWithValue("name", name);
                 cmd.Parameters.AddWithValue("description", description);
-                    //, name =" + name + " , description = " + description + " , id_type = " + type.ID + " WHERE id_materiel =" + idMat;
+                //, name =" + name + " , description = " + description + " , id_type = " + type.ID + " WHERE id_materiel =" + idMat;
 
                 SqlDataAdapter adap = new SqlDataAdapter(cmd);
                 DataSet ds = new DataSet();
@@ -455,10 +431,10 @@ namespace gestionMatos
 
             using (SqlCommand cmd = connection.CreateCommand())
             {
-                cmd.CommandText = "SELECT intervention.id_intervention AS 'ID', materiel.name AS 'Materiel', client.name AS 'Client', intervention.date_plannifiee AS 'date Plannifiée', intervention.date_realisee AS 'date_realisée', intervention.commentaires AS 'Commentaires'"
-                    +"FROM intervention "
-                    +"INNER JOIN materiel ON materiel.id_materiel = intervention.id_materiel "
-                    +"INNER JOIN client ON client.id_client = materiel.id_client ";
+                cmd.CommandText = "SELECT intervention.id_intervention AS 'ID', materiel.name AS 'Materiel', client.name AS 'Client', intervention.date_plannifiee AS 'Date Plannifiée', intervention.date_realisee AS 'Date Realisée', intervention.commentaires AS 'Commentaires'"
+                    + "FROM intervention "
+                    + "INNER JOIN materiel ON materiel.id_materiel = intervention.id_materiel "
+                    + "INNER JOIN client ON client.id_client = materiel.id_client ";
 
 
                 SqlDataAdapter adap = new SqlDataAdapter(cmd);
@@ -473,9 +449,9 @@ namespace gestionMatos
         private void ToggleFormIntervention()
         {
             if (formFieldCommentaireIntervention.Enabled == false) { formFieldCommentaireIntervention.Enabled = true; } else { formFieldCommentaireIntervention.Enabled = false; }
-            if (formFieldDateIntervention.Enabled == false) { formFieldDateIntervention.Enabled = true; } else { formFieldDateIntervention.Enabled = false; }
+            if (dateTimePickerIntervention.Enabled == false) { dateTimePickerIntervention.Enabled = true; } else { dateTimePickerIntervention.Enabled = false; }
             if (buttonValiderIntervention.Enabled == false) { buttonValiderIntervention.Enabled = true; } else { buttonValiderIntervention.Enabled = false; }
-           
+
         }
 
         private void dataGrid_Listing_Intervention_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -489,7 +465,7 @@ namespace gestionMatos
         {
             editButtonIntervention.Enabled = false;
             formFieldCommentaireIntervention.Enabled = false;
-            formFieldDateIntervention.Enabled = false;
+            dateTimePickerIntervention.Enabled = false;
             buttonValiderIntervention.Enabled = false;
         }
 
@@ -497,6 +473,189 @@ namespace gestionMatos
         {
             ToggleFormIntervention();
         }
+
+        private void buttonValiderIntervention_Click(object sender, EventArgs e)
+        {
+
+            DataSet1TableAdapters.interventionTableAdapter materielAdaptater = new DataSet1TableAdapters.interventionTableAdapter();
+            DataSet1TableAdapters.interventionTableAdapter intervetionAdaptater = new DataSet1TableAdapters.interventionTableAdapter();
+            DataSet1.interventionDataTable tab1 = new DataSet1.interventionDataTable();
+
+            int selectedrowindex = dataGrid_Listing_Intervention.SelectedCells[0].RowIndex;
+            DataGridViewRow selectedRow = dataGrid_Listing_Intervention.Rows[selectedrowindex];
+            int idInter = (int)selectedRow.Cells[0].Value;
+            var theDate = dateTimePickerIntervention.Value;
+            string commentaires = formFieldCommentaireIntervention.Text;
+            materielAdaptater.UpdateIntervention(tab1, idInter, theDate, commentaires);
+
+            MessageBox.Show("L'intervention a été modifiée avec succès");
+            FillDataViewGridIntervention();
+        }
+
+
+        ////ACCUEIL//////////////////////////////////////////////////////////////
+
+
+
+        private void accueil_initialize()
+        {
+            FillDataViewGridAccueil();
+
+        }
+
+        private void FillDataViewGridAccueil()
+        {
+
+            using (SqlCommand cmd = connection.CreateCommand())
+            {
+                cmd.CommandText = "SELECT TOP 5 materiel.name, convert(varchar(50),intervention.date_realisee,103) AS DateRealisee FROM intervention "
+                    +"INNER JOIN materiel ON materiel.id_materiel = intervention.id_materiel  ORDER BY date_realisee";
+                SqlDataAdapter adap = new SqlDataAdapter(cmd);
+                DataSet ds = new DataSet();
+                adap.Fill(ds);
+                DataTable myDataTable = ds.Tables[0];
+
+                foreach (DataRow dataRow in myDataTable.Rows)
+                {
+                    listLastIntervention.Items.Add(dataRow["name"] + "  : " + dataRow["DateRealisee"]);
+                }
+            }
+
+            using (SqlCommand cmd2 = connection.CreateCommand())
+            {
+                cmd2.CommandText = "SELECT TOP 5 materiel.name, convert(varchar(50),intervention.date_plannifiee,103) AS DatePlannifiee FROM intervention "
+                    +"INNER JOIN materiel ON materiel.id_materiel = intervention.id_materiel ORDER BY date_plannifiee";
+                SqlDataAdapter adap = new SqlDataAdapter(cmd2);
+                DataSet ds = new DataSet();
+                adap.Fill(ds);
+                DataTable myDataTable = ds.Tables[0];
+
+                foreach (DataRow dataRow in myDataTable.Rows)
+                {
+                    listNextIntervention.Items.Add(dataRow["name"] + "  : " + dataRow["DatePlannifiee"]);
+                }
+            }
+
+        }
+
+
+
+        // CLIENT//
+        private void client_initialize()
+        {
+            denominationClient.Enabled = false;
+            buttonValiderClient.Enabled = false;
+            try
+            {
+                using (SqlCommand cmd = connection.CreateCommand())
+                {
+                    cmd.CommandText = "SELECT id_client AS 'ID' , name AS 'Nom Client' FROM Client";
+                    SqlDataAdapter adap = new SqlDataAdapter(cmd);
+                    DataSet ds = new DataSet();
+                    adap.Fill(ds);
+                    dataGrid_Listing_Client.ReadOnly = true;
+                    dataGrid_Listing_Client.DataSource = ds.Tables[0].DefaultView;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ToggleFormClient();
+        }
+
+
+
+
+        private void ToggleFormClient()
+        {
+            if (denominationClient.Enabled == false) { denominationClient.Enabled = true; } else { denominationClient.Enabled = false; }
+            if (buttonValiderClient.Enabled == false) { buttonValiderClient.Enabled = true; } else { buttonValiderClient.Enabled = false; }
+        }
+
+        private void buttonValiderClient_Click(object sender, EventArgs e)
+        {
+            if (isModif == false)
+            {
+                DataSet1TableAdapters.clientTableAdapter clientAdaptater = new DataSet1TableAdapters.clientTableAdapter();
+                DataSet1TableAdapters.clientTableAdapter intervetionAdaptater = new DataSet1TableAdapters.clientTableAdapter();
+                DataSet1.clientDataTable tab1 = new DataSet1.clientDataTable();
+                clientAdaptater.Insert(denominationClient.Text);
+                MessageBox.Show("Client crée avec succès");
+                client_initialize();
+                denominationClient.Text = "";
+            }
+            else
+            {
+
+                int selectedrowindex = dataGrid_Listing_Client.SelectedCells[0].RowIndex;
+                DataGridViewRow selectedRow = dataGrid_Listing_Client.Rows[selectedrowindex];
+                int idClient = Convert.ToInt32(selectedRow.Cells[0].Value);
+
+                SqlCommand cmd = connection.CreateCommand();
+                string name = denominationClient.Text;
+                //cmd.CommandText = "UPDATE client SET name = "+ name +" WHERE id_client = "+idClient;
+                cmd.CommandText = "UPDATE client SET name = @name WHERE id_client= " + idClient;
+                cmd.Parameters.AddWithValue("name", name);
+                SqlDataAdapter adap = new SqlDataAdapter(cmd);
+                DataSet ds = new DataSet();
+                adap.Fill(ds);
+                client_initialize();
+                MessageBox.Show("Client modifié avec avec succès");
+                isModif = false;
+            }
+        }
+
+        private void buttonDeleteClient_Click(object sender, EventArgs e)
+        {
+
+            int selectedrowindex = dataGrid_Listing_Client.SelectedCells[0].RowIndex;
+            DataGridViewRow selectedRow = dataGrid_Listing_Client.Rows[selectedrowindex];
+            int idClient = Convert.ToInt32(selectedRow.Cells[0].Value);
+            SqlCommand cmd = connection.CreateCommand();
+            cmd.CommandText = "delete from client where id_client = " + idClient;
+            SqlDataAdapter adap = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            adap.Fill(ds);
+            client_initialize();
+            MessageBox.Show("Client supprimé avec succès");
+        }
+
+        private void buttonEditClient_Click(object sender, EventArgs e)
+        {
+            isModif = true;
+            ToggleFormClient();
+            int selectedrowindex = dataGrid_Listing_Client.SelectedCells[0].RowIndex;
+            DataGridViewRow selectedRow = dataGrid_Listing_Client.Rows[selectedrowindex];
+            string nomClient = Convert.ToString(selectedRow.Cells[1].Value);
+            denominationClient.Text = nomClient;
+
+        }
+
+        private void searchClient_Click(object sender, EventArgs e)
+        {
+            string name = formFieldRecherche.Text;
+            
+            cmd.CommandText = "SELECT * FROM [gestion_materiel].[dbo].[client] where name like '%'+ @name + '%'";
+            cmd.Parameters.AddWithValue("name", name);
+            SqlDataAdapter adap = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            adap.Fill(ds);
+           
+            dataGrid_Listing_Client.ReadOnly = true;
+            dataGrid_Listing_Client.DataSource = ds.Tables[0].DefaultView;
+
+            name = "";
+        }
+
+   
+
+
 
     }
 }

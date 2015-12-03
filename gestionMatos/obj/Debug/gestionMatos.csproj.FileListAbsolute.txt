@@ -25,3 +25,12 @@ C:\Users\nico\Downloads\GestionMatosV3\gestionMatos\obj\Debug\gestionMatos.cspro
 C:\Users\nico\Downloads\GestionMatosV3\gestionMatos\obj\Debug\gestionMatos.Form1.resources
 C:\Users\nico\Downloads\GestionMatosV3\gestionMatos\obj\Debug\gestionMatos.Properties.Resources.resources
 C:\Users\nico\Downloads\GestionMatosV3\gestionMatos\obj\Debug\gestionMatos.csproj.GenerateResource.Cache
+C:\Users\nicolasdom\Desktop\Nouveau dossier (3)\GestionMatos\gestionMatos\bin\Debug\gestionMatos.exe.config
+C:\Users\nicolasdom\Desktop\Nouveau dossier (3)\GestionMatos\gestionMatos\obj\Debug\gestionMatos.exe
+C:\Users\nicolasdom\Desktop\Nouveau dossier (3)\GestionMatos\gestionMatos\obj\Debug\gestionMatos.pdb
+C:\Users\nicolasdom\Desktop\Nouveau dossier (3)\GestionMatos\gestionMatos\bin\Debug\gestionMatos.exe
+C:\Users\nicolasdom\Desktop\Nouveau dossier (3)\GestionMatos\gestionMatos\bin\Debug\gestionMatos.pdb
+C:\Users\nicolasdom\Desktop\Nouveau dossier (3)\GestionMatos\gestionMatos\obj\Debug\gestionMatos.csprojResolveAssemblyReference.cache
+C:\Users\nicolasdom\Desktop\Nouveau dossier (3)\GestionMatos\gestionMatos\obj\Debug\gestionMatos.Form1.resources
+C:\Users\nicolasdom\Desktop\Nouveau dossier (3)\GestionMatos\gestionMatos\obj\Debug\gestionMatos.Properties.Resources.resources
+C:\Users\nicolasdom\Desktop\Nouveau dossier (3)\GestionMatos\gestionMatos\obj\Debug\gestionMatos.csproj.GenerateResource.Cache
