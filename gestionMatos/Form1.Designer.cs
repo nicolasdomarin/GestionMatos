@@ -70,41 +70,39 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.button4 = new System.Windows.Forms.Button();
+            this.boutonValider = new System.Windows.Forms.Button();
             this.onglet_materiels = new System.Windows.Forms.TabPage();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.deleteButtonMateriel = new System.Windows.Forms.Button();
+            this.editButtonMateriel = new System.Windows.Forms.Button();
+            this.addButtonMateriel = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.dataGrid_Listing_Materiel = new System.Windows.Forms.DataGridView();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.formFieldDescription = new System.Windows.Forms.TextBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.formFieldSalle = new System.Windows.Forms.ComboBox();
+            this.formFieldEtage = new System.Windows.Forms.ComboBox();
+            this.formFieldBatiment = new System.Windows.Forms.ComboBox();
+            this.formFieldSite = new System.Windows.Forms.ComboBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.formFieldNomMateriel = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.formFieldTypeMateriel = new System.Windows.Forms.ComboBox();
+            this.formFieldClient = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.button8 = new System.Windows.Forms.Button();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
+            this.buttonValider = new System.Windows.Forms.Button();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.label21 = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.id_materiel = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.name_mat = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.type = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.materiel_client = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.etage = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Batiment = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Site = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
-            this.comboBox6 = new System.Windows.Forms.ComboBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.buttonAnnuler = new System.Windows.Forms.Button();
             this.tabControl1Onglets.SuspendLayout();
             this.onglet_accueil.SuspendLayout();
             this.groupBoxAccueilIntervention.SuspendLayout();
@@ -114,7 +112,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.onglet_materiels.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGrid_Listing_Materiel)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.SuspendLayout();
@@ -454,7 +452,7 @@
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.button4);
+            this.groupBox1.Controls.Add(this.boutonValider);
             this.groupBox1.Location = new System.Drawing.Point(179, 340);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(544, 182);
@@ -526,23 +524,23 @@
             this.textBox2.Size = new System.Drawing.Size(100, 20);
             this.textBox2.TabIndex = 8;
             // 
-            // button4
+            // boutonValider
             // 
-            this.button4.Location = new System.Drawing.Point(424, 125);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 7;
-            this.button4.Text = "Valider";
-            this.button4.UseVisualStyleBackColor = true;
+            this.boutonValider.Location = new System.Drawing.Point(424, 125);
+            this.boutonValider.Name = "boutonValider";
+            this.boutonValider.Size = new System.Drawing.Size(75, 23);
+            this.boutonValider.TabIndex = 7;
+            this.boutonValider.Text = "Valider";
+            this.boutonValider.UseVisualStyleBackColor = true;
             // 
             // onglet_materiels
             // 
-            this.onglet_materiels.Controls.Add(this.button7);
-            this.onglet_materiels.Controls.Add(this.button6);
-            this.onglet_materiels.Controls.Add(this.button5);
+            this.onglet_materiels.Controls.Add(this.deleteButtonMateriel);
+            this.onglet_materiels.Controls.Add(this.editButtonMateriel);
+            this.onglet_materiels.Controls.Add(this.addButtonMateriel);
             this.onglet_materiels.Controls.Add(this.label13);
             this.onglet_materiels.Controls.Add(this.label12);
-            this.onglet_materiels.Controls.Add(this.dataGridView3);
+            this.onglet_materiels.Controls.Add(this.dataGrid_Listing_Materiel);
             this.onglet_materiels.Controls.Add(this.comboBox1);
             this.onglet_materiels.Controls.Add(this.groupBox2);
             this.onglet_materiels.Location = new System.Drawing.Point(4, 22);
@@ -553,32 +551,33 @@
             this.onglet_materiels.Text = "Matériels";
             this.onglet_materiels.UseVisualStyleBackColor = true;
             // 
-            // button7
+            // deleteButtonMateriel
             // 
-            this.button7.Location = new System.Drawing.Point(787, 281);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(116, 23);
-            this.button7.TabIndex = 7;
-            this.button7.Text = "Supprimer un matériel";
-            this.button7.UseVisualStyleBackColor = true;
+            this.deleteButtonMateriel.Location = new System.Drawing.Point(787, 281);
+            this.deleteButtonMateriel.Name = "deleteButtonMateriel";
+            this.deleteButtonMateriel.Size = new System.Drawing.Size(116, 23);
+            this.deleteButtonMateriel.TabIndex = 7;
+            this.deleteButtonMateriel.Text = "Supprimer un matériel";
+            this.deleteButtonMateriel.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // editButtonMateriel
             // 
-            this.button6.Location = new System.Drawing.Point(787, 197);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(116, 23);
-            this.button6.TabIndex = 6;
-            this.button6.Text = "Modifier un matériel";
-            this.button6.UseVisualStyleBackColor = true;
+            this.editButtonMateriel.Location = new System.Drawing.Point(787, 197);
+            this.editButtonMateriel.Name = "editButtonMateriel";
+            this.editButtonMateriel.Size = new System.Drawing.Size(116, 23);
+            this.editButtonMateriel.TabIndex = 6;
+            this.editButtonMateriel.Text = "Modifier un matériel";
+            this.editButtonMateriel.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // addButtonMateriel
             // 
-            this.button5.Location = new System.Drawing.Point(787, 117);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(116, 23);
-            this.button5.TabIndex = 5;
-            this.button5.Text = "Ajouter un matériel";
-            this.button5.UseVisualStyleBackColor = true;
+            this.addButtonMateriel.Location = new System.Drawing.Point(787, 117);
+            this.addButtonMateriel.Name = "addButtonMateriel";
+            this.addButtonMateriel.Size = new System.Drawing.Size(116, 23);
+            this.addButtonMateriel.TabIndex = 5;
+            this.addButtonMateriel.Text = "Ajouter un matériel";
+            this.addButtonMateriel.UseVisualStyleBackColor = true;
+            this.addButtonMateriel.Click += new System.EventHandler(this.addButtonMateriel_Click);
             // 
             // label13
             // 
@@ -599,21 +598,14 @@
             this.label12.TabIndex = 3;
             this.label12.Text = "Matériels";
             // 
-            // dataGridView3
+            // dataGrid_Listing_Materiel
             // 
-            this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.id_materiel,
-            this.name_mat,
-            this.type,
-            this.materiel_client,
-            this.etage,
-            this.Batiment,
-            this.Site});
-            this.dataGridView3.Location = new System.Drawing.Point(6, 117);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dataGridView3.Size = new System.Drawing.Size(743, 187);
-            this.dataGridView3.TabIndex = 2;
+            this.dataGrid_Listing_Materiel.Location = new System.Drawing.Point(6, 117);
+            this.dataGrid_Listing_Materiel.Name = "dataGrid_Listing_Materiel";
+            this.dataGrid_Listing_Materiel.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dataGrid_Listing_Materiel.Size = new System.Drawing.Size(743, 187);
+            this.dataGrid_Listing_Materiel.TabIndex = 2;
+            this.dataGrid_Listing_Materiel.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGrid_Listing_Materiel_CellContentClick);
             // 
             // comboBox1
             // 
@@ -622,35 +614,123 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(199, 21);
             this.comboBox1.TabIndex = 1;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.comboBox6);
-            this.groupBox2.Controls.Add(this.comboBox5);
-            this.groupBox2.Controls.Add(this.comboBox4);
+            this.groupBox2.Controls.Add(this.buttonAnnuler);
+            this.groupBox2.Controls.Add(this.formFieldDescription);
+            this.groupBox2.Controls.Add(this.label22);
+            this.groupBox2.Controls.Add(this.label17);
+            this.groupBox2.Controls.Add(this.formFieldSalle);
+            this.groupBox2.Controls.Add(this.formFieldEtage);
+            this.groupBox2.Controls.Add(this.formFieldBatiment);
+            this.groupBox2.Controls.Add(this.formFieldSite);
             this.groupBox2.Controls.Add(this.label18);
             this.groupBox2.Controls.Add(this.label20);
-            this.groupBox2.Controls.Add(this.textBox6);
+            this.groupBox2.Controls.Add(this.formFieldNomMateriel);
             this.groupBox2.Controls.Add(this.label16);
             this.groupBox2.Controls.Add(this.label19);
-            this.groupBox2.Controls.Add(this.comboBox3);
-            this.groupBox2.Controls.Add(this.comboBox2);
+            this.groupBox2.Controls.Add(this.formFieldTypeMateriel);
+            this.groupBox2.Controls.Add(this.formFieldClient);
             this.groupBox2.Controls.Add(this.label15);
             this.groupBox2.Controls.Add(this.label14);
-            this.groupBox2.Controls.Add(this.button8);
+            this.groupBox2.Controls.Add(this.buttonValider);
             this.groupBox2.Location = new System.Drawing.Point(7, 327);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(742, 182);
+            this.groupBox2.Size = new System.Drawing.Size(955, 182);
             this.groupBox2.TabIndex = 9;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Formulaire";
             // 
-            // textBox6
+            // formFieldDescription
             // 
-            this.textBox6.Location = new System.Drawing.Point(129, 38);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(198, 20);
-            this.textBox6.TabIndex = 14;
+            this.formFieldDescription.Location = new System.Drawing.Point(742, 94);
+            this.formFieldDescription.Name = "formFieldDescription";
+            this.formFieldDescription.Size = new System.Drawing.Size(193, 20);
+            this.formFieldDescription.TabIndex = 21;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(676, 97);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(63, 13);
+            this.label22.TabIndex = 20;
+            this.label22.Text = "Description ";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(676, 38);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(30, 13);
+            this.label17.TabIndex = 19;
+            this.label17.Text = "Salle";
+            // 
+            // formFieldSalle
+            // 
+            this.formFieldSalle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.formFieldSalle.FormattingEnabled = true;
+            this.formFieldSalle.Location = new System.Drawing.Point(742, 38);
+            this.formFieldSalle.Name = "formFieldSalle";
+            this.formFieldSalle.Size = new System.Drawing.Size(193, 21);
+            this.formFieldSalle.TabIndex = 18;
+            // 
+            // formFieldEtage
+            // 
+            this.formFieldEtage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.formFieldEtage.FormattingEnabled = true;
+            this.formFieldEtage.Location = new System.Drawing.Point(446, 142);
+            this.formFieldEtage.Name = "formFieldEtage";
+            this.formFieldEtage.Size = new System.Drawing.Size(193, 21);
+            this.formFieldEtage.TabIndex = 17;
+            this.formFieldEtage.SelectedIndexChanged += new System.EventHandler(this.formFieldEtage_SelectedIndexChanged);
+            // 
+            // formFieldBatiment
+            // 
+            this.formFieldBatiment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.formFieldBatiment.FormattingEnabled = true;
+            this.formFieldBatiment.Location = new System.Drawing.Point(446, 89);
+            this.formFieldBatiment.Name = "formFieldBatiment";
+            this.formFieldBatiment.Size = new System.Drawing.Size(193, 21);
+            this.formFieldBatiment.TabIndex = 16;
+            this.formFieldBatiment.SelectedIndexChanged += new System.EventHandler(this.formFieldBatiment_SelectedIndexChanged);
+            // 
+            // formFieldSite
+            // 
+            this.formFieldSite.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.formFieldSite.FormattingEnabled = true;
+            this.formFieldSite.Location = new System.Drawing.Point(446, 35);
+            this.formFieldSite.Name = "formFieldSite";
+            this.formFieldSite.Size = new System.Drawing.Size(193, 21);
+            this.formFieldSite.TabIndex = 15;
+            this.formFieldSite.SelectedIndexChanged += new System.EventHandler(this.formFieldSite_SelectedIndexChanged);
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(390, 92);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(54, 13);
+            this.label18.TabIndex = 1;
+            this.label18.Text = "Batiment :";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(390, 146);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(35, 13);
+            this.label20.TabIndex = 4;
+            this.label20.Text = "Étage";
+            // 
+            // formFieldNomMateriel
+            // 
+            this.formFieldNomMateriel.Location = new System.Drawing.Point(129, 38);
+            this.formFieldNomMateriel.Name = "formFieldNomMateriel";
+            this.formFieldNomMateriel.Size = new System.Drawing.Size(198, 20);
+            this.formFieldNomMateriel.TabIndex = 14;
             // 
             // label16
             // 
@@ -661,21 +741,32 @@
             this.label16.TabIndex = 13;
             this.label16.Text = "Type de matériel :";
             // 
-            // comboBox3
+            // label19
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(129, 143);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(164, 21);
-            this.comboBox3.TabIndex = 12;
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(390, 38);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(25, 13);
+            this.label19.TabIndex = 2;
+            this.label19.Text = "Site";
             // 
-            // comboBox2
+            // formFieldTypeMateriel
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(129, 84);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(164, 21);
-            this.comboBox2.TabIndex = 11;
+            this.formFieldTypeMateriel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.formFieldTypeMateriel.FormattingEnabled = true;
+            this.formFieldTypeMateriel.Location = new System.Drawing.Point(129, 143);
+            this.formFieldTypeMateriel.Name = "formFieldTypeMateriel";
+            this.formFieldTypeMateriel.Size = new System.Drawing.Size(164, 21);
+            this.formFieldTypeMateriel.TabIndex = 12;
+            // 
+            // formFieldClient
+            // 
+            this.formFieldClient.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.formFieldClient.FormattingEnabled = true;
+            this.formFieldClient.Location = new System.Drawing.Point(129, 84);
+            this.formFieldClient.Name = "formFieldClient";
+            this.formFieldClient.Size = new System.Drawing.Size(164, 21);
+            this.formFieldClient.TabIndex = 11;
             // 
             // label15
             // 
@@ -695,41 +786,15 @@
             this.label14.TabIndex = 9;
             this.label14.Text = "Nom Matériel :";
             // 
-            // button8
+            // buttonValider
             // 
-            this.button8.Location = new System.Drawing.Point(661, 153);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(75, 23);
-            this.button8.TabIndex = 8;
-            this.button8.Text = "Valider";
-            this.button8.UseVisualStyleBackColor = true;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(390, 92);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(39, 13);
-            this.label18.TabIndex = 1;
-            this.label18.Text = "Client :";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(390, 38);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(25, 13);
-            this.label19.TabIndex = 2;
-            this.label19.Text = "Site";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(390, 146);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(35, 13);
-            this.label20.TabIndex = 4;
-            this.label20.Text = "Étage";
+            this.buttonValider.Location = new System.Drawing.Point(742, 153);
+            this.buttonValider.Name = "buttonValider";
+            this.buttonValider.Size = new System.Drawing.Size(75, 23);
+            this.buttonValider.TabIndex = 8;
+            this.buttonValider.Text = "Valider";
+            this.buttonValider.UseVisualStyleBackColor = true;
+            this.buttonValider.Click += new System.EventHandler(this.buttonValider_Click);
             // 
             // tabPage1
             // 
@@ -744,15 +809,14 @@
             this.tabPage1.Text = "Configuration";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // label21
+            // groupBox5
             // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(447, 23);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(176, 31);
-            this.label21.TabIndex = 0;
-            this.label21.Text = "Configuration";
+            this.groupBox5.Location = new System.Drawing.Point(634, 125);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(200, 100);
+            this.groupBox5.TabIndex = 2;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Bâtiment";
             // 
             // groupBox3
             // 
@@ -763,76 +827,25 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Étage";
             // 
-            // groupBox5
+            // label21
             // 
-            this.groupBox5.Location = new System.Drawing.Point(634, 125);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(200, 100);
-            this.groupBox5.TabIndex = 2;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Bâtiment";
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(447, 23);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(176, 31);
+            this.label21.TabIndex = 0;
+            this.label21.Text = "Configuration";
             // 
-            // id_materiel
+            // buttonAnnuler
             // 
-            this.id_materiel.Frozen = true;
-            this.id_materiel.HeaderText = "ID";
-            this.id_materiel.Name = "id_materiel";
-            // 
-            // name_mat
-            // 
-            this.name_mat.Frozen = true;
-            this.name_mat.HeaderText = "Nom";
-            this.name_mat.Name = "name_mat";
-            // 
-            // type
-            // 
-            this.type.Frozen = true;
-            this.type.HeaderText = "Type Matériel";
-            this.type.Name = "type";
-            // 
-            // materiel_client
-            // 
-            this.materiel_client.HeaderText = "Client";
-            this.materiel_client.Name = "materiel_client";
-            // 
-            // etage
-            // 
-            this.etage.HeaderText = "Étage";
-            this.etage.Name = "etage";
-            // 
-            // Batiment
-            // 
-            this.Batiment.HeaderText = "Bâtiment";
-            this.Batiment.Name = "Batiment";
-            // 
-            // Site
-            // 
-            this.Site.HeaderText = "Site";
-            this.Site.Name = "Site";
-            // 
-            // comboBox4
-            // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(446, 35);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(193, 21);
-            this.comboBox4.TabIndex = 15;
-            // 
-            // comboBox5
-            // 
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Location = new System.Drawing.Point(446, 89);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(193, 21);
-            this.comboBox5.TabIndex = 16;
-            // 
-            // comboBox6
-            // 
-            this.comboBox6.FormattingEnabled = true;
-            this.comboBox6.Location = new System.Drawing.Point(446, 142);
-            this.comboBox6.Name = "comboBox6";
-            this.comboBox6.Size = new System.Drawing.Size(193, 21);
-            this.comboBox6.TabIndex = 17;
+            this.buttonAnnuler.Location = new System.Drawing.Point(834, 153);
+            this.buttonAnnuler.Name = "buttonAnnuler";
+            this.buttonAnnuler.Size = new System.Drawing.Size(75, 23);
+            this.buttonAnnuler.TabIndex = 22;
+            this.buttonAnnuler.Text = "Annuler";
+            this.buttonAnnuler.UseVisualStyleBackColor = true;
+            this.buttonAnnuler.Click += new System.EventHandler(this.buttonAnnuler_Click);
             // 
             // Form1
             // 
@@ -857,7 +870,7 @@
             this.groupBox1.PerformLayout();
             this.onglet_materiels.ResumeLayout(false);
             this.onglet_materiels.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGrid_Listing_Materiel)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.tabPage1.ResumeLayout(false);
@@ -908,43 +921,41 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button boutonValider;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.DataGridView dataGridView3;
+        private System.Windows.Forms.DataGridView dataGrid_Listing_Materiel;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button buttonValider;
+        private System.Windows.Forms.Button deleteButtonMateriel;
+        private System.Windows.Forms.Button editButtonMateriel;
+        private System.Windows.Forms.Button addButtonMateriel;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox formFieldTypeMateriel;
+        private System.Windows.Forms.ComboBox formFieldClient;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox formFieldNomMateriel;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id_materiel;
-        private System.Windows.Forms.DataGridViewTextBoxColumn name_mat;
-        private System.Windows.Forms.DataGridViewTextBoxColumn type;
-        private System.Windows.Forms.DataGridViewTextBoxColumn materiel_client;
-        private System.Windows.Forms.DataGridViewTextBoxColumn etage;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Batiment;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Site;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.ComboBox comboBox6;
-        private System.Windows.Forms.ComboBox comboBox5;
-        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.ComboBox formFieldEtage;
+        private System.Windows.Forms.ComboBox formFieldBatiment;
+        private System.Windows.Forms.ComboBox formFieldSite;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.ComboBox formFieldSalle;
+        private System.Windows.Forms.TextBox formFieldDescription;
+        private System.Windows.Forms.Button buttonAnnuler;
     }
 }
 

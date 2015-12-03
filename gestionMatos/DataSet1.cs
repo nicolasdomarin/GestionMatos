@@ -6,8 +6,12 @@
 }
 
 namespace gestionMatos.DataSet1TableAdapters {
-    
-    
-    public partial class clientTableAdapter {
+    partial class materielTableAdapter
+    {
+    }
+
+
+    partial class clientTableAdapter
+    {
     }
 }
