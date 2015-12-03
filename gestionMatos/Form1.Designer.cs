@@ -56,17 +56,17 @@
             this.id_client = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Denomination = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.onglet_interventions = new System.Windows.Forms.TabPage();
-            this.button2 = new System.Windows.Forms.Button();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.editButtonIntervention = new System.Windows.Forms.Button();
+            this.dataGrid_Listing_Intervention = new System.Windows.Forms.DataGridView();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.formFieldDateIntervention = new System.Windows.Forms.TextBox();
+            this.formFieldCommentaireIntervention = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.boutonValider = new System.Windows.Forms.Button();
+            this.buttonValiderIntervention = new System.Windows.Forms.Button();
             this.onglet_materiels = new System.Windows.Forms.TabPage();
             this.deleteButtonMateriel = new System.Windows.Forms.Button();
             this.editButtonMateriel = new System.Windows.Forms.Button();
@@ -94,6 +94,23 @@
             this.label14 = new System.Windows.Forms.Label();
             this.buttonValider = new System.Windows.Forms.Button();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.button8 = new System.Windows.Forms.Button();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
+            this.lineShape1 = new Microsoft.VisualBasic.PowerPacks.LineShape();
+            this.label21 = new System.Windows.Forms.Label();
+            this.shapeContainer2 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
+            this.lineShape4 = new Microsoft.VisualBasic.PowerPacks.LineShape();
+            this.lineShape3 = new Microsoft.VisualBasic.PowerPacks.LineShape();
+            this.lineShape2 = new Microsoft.VisualBasic.PowerPacks.LineShape();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.button12 = new System.Windows.Forms.Button();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.button13 = new System.Windows.Forms.Button();
+            this.button14 = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.button9 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
@@ -104,24 +121,7 @@
             this.comboBox5 = new System.Windows.Forms.ComboBox();
             this.button16 = new System.Windows.Forms.Button();
             this.button17 = new System.Windows.Forms.Button();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.button8 = new System.Windows.Forms.Button();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.button12 = new System.Windows.Forms.Button();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.button13 = new System.Windows.Forms.Button();
-            this.button14 = new System.Windows.Forms.Button();
-            this.label21 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
-            this.lineShape1 = new Microsoft.VisualBasic.PowerPacks.LineShape();
-            this.lineShape2 = new Microsoft.VisualBasic.PowerPacks.LineShape();
-            this.shapeContainer2 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
-            this.lineShape3 = new Microsoft.VisualBasic.PowerPacks.LineShape();
-            this.lineShape4 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.tabControl1Onglets.SuspendLayout();
             this.onglet_accueil.SuspendLayout();
             this.groupBoxAccueilIntervention.SuspendLayout();
@@ -129,16 +129,16 @@
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid_Listing_Client)).BeginInit();
             this.onglet_interventions.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGrid_Listing_Intervention)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.onglet_materiels.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid_Listing_Materiel)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.groupBox5.SuspendLayout();
-            this.groupBox7.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.groupBox7.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1Onglets
@@ -412,8 +412,8 @@
             // 
             // onglet_interventions
             // 
-            this.onglet_interventions.Controls.Add(this.button2);
-            this.onglet_interventions.Controls.Add(this.dataGridView2);
+            this.onglet_interventions.Controls.Add(this.editButtonIntervention);
+            this.onglet_interventions.Controls.Add(this.dataGrid_Listing_Intervention);
             this.onglet_interventions.Controls.Add(this.radioButton2);
             this.onglet_interventions.Controls.Add(this.radioButton1);
             this.onglet_interventions.Controls.Add(this.label7);
@@ -426,25 +426,28 @@
             this.onglet_interventions.Text = "Interventions";
             this.onglet_interventions.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // editButtonIntervention
             // 
-            this.button2.Location = new System.Drawing.Point(809, 208);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(141, 23);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "Modifier une intervention";
-            this.button2.UseVisualStyleBackColor = true;
+            this.editButtonIntervention.Location = new System.Drawing.Point(809, 208);
+            this.editButtonIntervention.Name = "editButtonIntervention";
+            this.editButtonIntervention.Size = new System.Drawing.Size(141, 23);
+            this.editButtonIntervention.TabIndex = 5;
+            this.editButtonIntervention.Text = "Modifier une intervention";
+            this.editButtonIntervention.UseVisualStyleBackColor = true;
+            this.editButtonIntervention.Click += new System.EventHandler(this.editButtonIntervention_Click);
             // 
-            // dataGridView2
+            // dataGrid_Listing_Intervention
             // 
-            this.dataGridView2.AllowUserToAddRows = false;
-            this.dataGridView2.AllowUserToDeleteRows = false;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(129, 107);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.ReadOnly = true;
-            this.dataGridView2.Size = new System.Drawing.Size(643, 206);
-            this.dataGridView2.TabIndex = 3;
+            this.dataGrid_Listing_Intervention.AllowUserToAddRows = false;
+            this.dataGrid_Listing_Intervention.AllowUserToDeleteRows = false;
+            this.dataGrid_Listing_Intervention.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGrid_Listing_Intervention.Location = new System.Drawing.Point(129, 107);
+            this.dataGrid_Listing_Intervention.Name = "dataGrid_Listing_Intervention";
+            this.dataGrid_Listing_Intervention.ReadOnly = true;
+            this.dataGrid_Listing_Intervention.Size = new System.Drawing.Size(643, 206);
+            this.dataGrid_Listing_Intervention.TabIndex = 3;
+            this.dataGrid_Listing_Intervention.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGrid_Listing_Intervention_CellContentClick);
+            this.dataGrid_Listing_Intervention.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGrid_Listing_Intervention_CellContentClick);
             // 
             // radioButton2
             // 
@@ -481,10 +484,10 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.label11);
-            this.groupBox1.Controls.Add(this.textBox5);
-            this.groupBox1.Controls.Add(this.textBox4);
+            this.groupBox1.Controls.Add(this.formFieldDateIntervention);
+            this.groupBox1.Controls.Add(this.formFieldCommentaireIntervention);
             this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.boutonValider);
+            this.groupBox1.Controls.Add(this.buttonValiderIntervention);
             this.groupBox1.Location = new System.Drawing.Point(179, 340);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(544, 182);
@@ -501,20 +504,20 @@
             this.label11.TabIndex = 15;
             this.label11.Text = "Date Réalisée :";
             // 
-            // textBox5
+            // formFieldDateIntervention
             // 
-            this.textBox5.Location = new System.Drawing.Point(399, 25);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 20);
-            this.textBox5.TabIndex = 14;
+            this.formFieldDateIntervention.Location = new System.Drawing.Point(399, 25);
+            this.formFieldDateIntervention.Name = "formFieldDateIntervention";
+            this.formFieldDateIntervention.Size = new System.Drawing.Size(100, 20);
+            this.formFieldDateIntervention.TabIndex = 14;
             // 
-            // textBox4
+            // formFieldCommentaireIntervention
             // 
-            this.textBox4.Location = new System.Drawing.Point(25, 45);
-            this.textBox4.Multiline = true;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(266, 131);
-            this.textBox4.TabIndex = 13;
+            this.formFieldCommentaireIntervention.Location = new System.Drawing.Point(25, 45);
+            this.formFieldCommentaireIntervention.Multiline = true;
+            this.formFieldCommentaireIntervention.Name = "formFieldCommentaireIntervention";
+            this.formFieldCommentaireIntervention.Size = new System.Drawing.Size(266, 131);
+            this.formFieldCommentaireIntervention.TabIndex = 13;
             // 
             // label10
             // 
@@ -525,14 +528,14 @@
             this.label10.TabIndex = 11;
             this.label10.Text = "Commentaire :";
             // 
-            // boutonValider
+            // buttonValiderIntervention
             // 
-            this.boutonValider.Location = new System.Drawing.Point(424, 138);
-            this.boutonValider.Name = "boutonValider";
-            this.boutonValider.Size = new System.Drawing.Size(75, 23);
-            this.boutonValider.TabIndex = 7;
-            this.boutonValider.Text = "Modifier";
-            this.boutonValider.UseVisualStyleBackColor = true;
+            this.buttonValiderIntervention.Location = new System.Drawing.Point(424, 138);
+            this.buttonValiderIntervention.Name = "buttonValiderIntervention";
+            this.buttonValiderIntervention.Size = new System.Drawing.Size(75, 23);
+            this.buttonValiderIntervention.TabIndex = 7;
+            this.buttonValiderIntervention.Text = "Modifier";
+            this.buttonValiderIntervention.UseVisualStyleBackColor = true;
             // 
             // onglet_materiels
             // 
@@ -820,6 +823,175 @@
             this.tabPage1.Text = "Configuration";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.button8);
+            this.groupBox6.Controls.Add(this.comboBox2);
+            this.groupBox6.Controls.Add(this.button7);
+            this.groupBox6.Controls.Add(this.button6);
+            this.groupBox6.Controls.Add(this.shapeContainer1);
+            this.groupBox6.Location = new System.Drawing.Point(33, 91);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(460, 208);
+            this.groupBox6.TabIndex = 3;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Salle";
+            // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(357, 44);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(75, 23);
+            this.button8.TabIndex = 3;
+            this.button8.Text = "Supprimer";
+            this.button8.UseVisualStyleBackColor = true;
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(24, 46);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(121, 21);
+            this.comboBox2.TabIndex = 2;
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(195, 44);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(75, 23);
+            this.button7.TabIndex = 1;
+            this.button7.Text = "Ajouter";
+            this.button7.UseVisualStyleBackColor = true;
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(276, 44);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(75, 23);
+            this.button6.TabIndex = 0;
+            this.button6.Text = "Modifier";
+            this.button6.UseVisualStyleBackColor = true;
+            // 
+            // shapeContainer1
+            // 
+            this.shapeContainer1.Location = new System.Drawing.Point(3, 16);
+            this.shapeContainer1.Margin = new System.Windows.Forms.Padding(0);
+            this.shapeContainer1.Name = "shapeContainer1";
+            this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
+            this.lineShape1});
+            this.shapeContainer1.Size = new System.Drawing.Size(454, 189);
+            this.shapeContainer1.TabIndex = 4;
+            this.shapeContainer1.TabStop = false;
+            // 
+            // lineShape1
+            // 
+            this.lineShape1.BorderColor = System.Drawing.SystemColors.ControlLight;
+            this.lineShape1.Name = "lineShape1";
+            this.lineShape1.X1 = 90;
+            this.lineShape1.X2 = 349;
+            this.lineShape1.Y1 = 81;
+            this.lineShape1.Y2 = 81;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(447, 23);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(176, 31);
+            this.label21.TabIndex = 0;
+            this.label21.Text = "Configuration";
+            // 
+            // shapeContainer2
+            // 
+            this.shapeContainer2.Location = new System.Drawing.Point(3, 3);
+            this.shapeContainer2.Margin = new System.Windows.Forms.Padding(0);
+            this.shapeContainer2.Name = "shapeContainer2";
+            this.shapeContainer2.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
+            this.lineShape4,
+            this.lineShape3,
+            this.lineShape2});
+            this.shapeContainer2.Size = new System.Drawing.Size(997, 537);
+            this.shapeContainer2.TabIndex = 5;
+            this.shapeContainer2.TabStop = false;
+            // 
+            // lineShape4
+            // 
+            this.lineShape4.BorderColor = System.Drawing.SystemColors.ControlLight;
+            this.lineShape4.Name = "lineShape4";
+            this.lineShape4.X1 = 631;
+            this.lineShape4.X2 = 890;
+            this.lineShape4.Y1 = 411;
+            this.lineShape4.Y2 = 411;
+            // 
+            // lineShape3
+            // 
+            this.lineShape3.BorderColor = System.Drawing.SystemColors.ControlLight;
+            this.lineShape3.Name = "lineShape3";
+            this.lineShape3.X1 = 126;
+            this.lineShape3.X2 = 385;
+            this.lineShape3.Y1 = 412;
+            this.lineShape3.Y2 = 412;
+            // 
+            // lineShape2
+            // 
+            this.lineShape2.BorderColor = System.Drawing.SystemColors.ControlLight;
+            this.lineShape2.Name = "lineShape2";
+            this.lineShape2.X1 = 638;
+            this.lineShape2.X2 = 897;
+            this.lineShape2.Y1 = 186;
+            this.lineShape2.Y2 = 186;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.button12);
+            this.groupBox3.Controls.Add(this.comboBox3);
+            this.groupBox3.Controls.Add(this.button13);
+            this.groupBox3.Controls.Add(this.button14);
+            this.groupBox3.Location = new System.Drawing.Point(531, 91);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(442, 208);
+            this.groupBox3.TabIndex = 1;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Étage";
+            // 
+            // button12
+            // 
+            this.button12.Location = new System.Drawing.Point(350, 44);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(75, 23);
+            this.button12.TabIndex = 10;
+            this.button12.Text = "Supprimer";
+            this.button12.UseVisualStyleBackColor = true;
+            // 
+            // comboBox3
+            // 
+            this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Location = new System.Drawing.Point(34, 46);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(121, 21);
+            this.comboBox3.TabIndex = 3;
+            // 
+            // button13
+            // 
+            this.button13.Location = new System.Drawing.Point(188, 44);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(75, 23);
+            this.button13.TabIndex = 9;
+            this.button13.Text = "Ajouter";
+            this.button13.UseVisualStyleBackColor = true;
+            // 
+            // button14
+            // 
+            this.button14.Location = new System.Drawing.Point(269, 44);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(75, 23);
+            this.button14.TabIndex = 8;
+            this.button14.Text = "Modifier";
+            this.button14.UseVisualStyleBackColor = true;
+            // 
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.button9);
@@ -918,175 +1090,6 @@
             this.button17.Text = "Modifier";
             this.button17.UseVisualStyleBackColor = true;
             // 
-            // groupBox6
-            // 
-            this.groupBox6.Controls.Add(this.button8);
-            this.groupBox6.Controls.Add(this.comboBox2);
-            this.groupBox6.Controls.Add(this.button7);
-            this.groupBox6.Controls.Add(this.button6);
-            this.groupBox6.Controls.Add(this.shapeContainer1);
-            this.groupBox6.Location = new System.Drawing.Point(33, 91);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(460, 208);
-            this.groupBox6.TabIndex = 3;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Salle";
-            // 
-            // button8
-            // 
-            this.button8.Location = new System.Drawing.Point(357, 44);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(75, 23);
-            this.button8.TabIndex = 3;
-            this.button8.Text = "Supprimer";
-            this.button8.UseVisualStyleBackColor = true;
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(24, 46);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 21);
-            this.comboBox2.TabIndex = 2;
-            // 
-            // button7
-            // 
-            this.button7.Location = new System.Drawing.Point(195, 44);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(75, 23);
-            this.button7.TabIndex = 1;
-            this.button7.Text = "Ajouter";
-            this.button7.UseVisualStyleBackColor = true;
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(276, 44);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
-            this.button6.TabIndex = 0;
-            this.button6.Text = "Modifier";
-            this.button6.UseVisualStyleBackColor = true;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.button12);
-            this.groupBox3.Controls.Add(this.comboBox3);
-            this.groupBox3.Controls.Add(this.button13);
-            this.groupBox3.Controls.Add(this.button14);
-            this.groupBox3.Location = new System.Drawing.Point(531, 91);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(442, 208);
-            this.groupBox3.TabIndex = 1;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Étage";
-            // 
-            // button12
-            // 
-            this.button12.Location = new System.Drawing.Point(350, 44);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(75, 23);
-            this.button12.TabIndex = 10;
-            this.button12.Text = "Supprimer";
-            this.button12.UseVisualStyleBackColor = true;
-            // 
-            // comboBox3
-            // 
-            this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(34, 46);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(121, 21);
-            this.comboBox3.TabIndex = 3;
-            // 
-            // button13
-            // 
-            this.button13.Location = new System.Drawing.Point(188, 44);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(75, 23);
-            this.button13.TabIndex = 9;
-            this.button13.Text = "Ajouter";
-            this.button13.UseVisualStyleBackColor = true;
-            // 
-            // button14
-            // 
-            this.button14.Location = new System.Drawing.Point(269, 44);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(75, 23);
-            this.button14.TabIndex = 8;
-            this.button14.Text = "Modifier";
-            this.button14.UseVisualStyleBackColor = true;
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(447, 23);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(176, 31);
-            this.label21.TabIndex = 0;
-            this.label21.Text = "Configuration";
-            // 
-            // shapeContainer1
-            // 
-            this.shapeContainer1.Location = new System.Drawing.Point(3, 16);
-            this.shapeContainer1.Margin = new System.Windows.Forms.Padding(0);
-            this.shapeContainer1.Name = "shapeContainer1";
-            this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
-            this.lineShape1});
-            this.shapeContainer1.Size = new System.Drawing.Size(454, 189);
-            this.shapeContainer1.TabIndex = 4;
-            this.shapeContainer1.TabStop = false;
-            // 
-            // lineShape1
-            // 
-            this.lineShape1.BorderColor = System.Drawing.SystemColors.ControlLight;
-            this.lineShape1.Name = "lineShape1";
-            this.lineShape1.X1 = 90;
-            this.lineShape1.X2 = 349;
-            this.lineShape1.Y1 = 81;
-            this.lineShape1.Y2 = 81;
-            // 
-            // lineShape2
-            // 
-            this.lineShape2.BorderColor = System.Drawing.SystemColors.ControlLight;
-            this.lineShape2.Name = "lineShape2";
-            this.lineShape2.X1 = 638;
-            this.lineShape2.X2 = 897;
-            this.lineShape2.Y1 = 186;
-            this.lineShape2.Y2 = 186;
-            // 
-            // shapeContainer2
-            // 
-            this.shapeContainer2.Location = new System.Drawing.Point(3, 3);
-            this.shapeContainer2.Margin = new System.Windows.Forms.Padding(0);
-            this.shapeContainer2.Name = "shapeContainer2";
-            this.shapeContainer2.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
-            this.lineShape4,
-            this.lineShape3,
-            this.lineShape2});
-            this.shapeContainer2.Size = new System.Drawing.Size(997, 537);
-            this.shapeContainer2.TabIndex = 5;
-            this.shapeContainer2.TabStop = false;
-            // 
-            // lineShape3
-            // 
-            this.lineShape3.BorderColor = System.Drawing.SystemColors.ControlLight;
-            this.lineShape3.Name = "lineShape3";
-            this.lineShape3.X1 = 126;
-            this.lineShape3.X2 = 385;
-            this.lineShape3.Y1 = 412;
-            this.lineShape3.Y2 = 412;
-            // 
-            // lineShape4
-            // 
-            this.lineShape4.BorderColor = System.Drawing.SystemColors.ControlLight;
-            this.lineShape4.Name = "lineShape4";
-            this.lineShape4.X1 = 631;
-            this.lineShape4.X2 = 890;
-            this.lineShape4.Y1 = 411;
-            this.lineShape4.Y2 = 411;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1107,7 +1110,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid_Listing_Client)).EndInit();
             this.onglet_interventions.ResumeLayout(false);
             this.onglet_interventions.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGrid_Listing_Intervention)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.onglet_materiels.ResumeLayout(false);
@@ -1117,10 +1120,10 @@
             this.groupBox2.PerformLayout();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox7.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox7.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1153,14 +1156,14 @@
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.Button editButtonIntervention;
+        private System.Windows.Forms.DataGridView dataGrid_Listing_Intervention;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Button boutonValider;
+        private System.Windows.Forms.Button buttonValiderIntervention;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox formFieldDateIntervention;
+        private System.Windows.Forms.TextBox formFieldCommentaireIntervention;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.DataGridView dataGrid_Listing_Materiel;
         private System.Windows.Forms.Label label13;

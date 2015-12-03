@@ -13,17 +13,21 @@ namespace gestionMatos
     public partial class Form1 : Form
     {
 
-        string MyConnectionString = "Data Source=NICO-PC\\SQLEXPRESS;Initial Catalog=gestion_materiel;Integrated Security=True";
+        static string MyConnectionString = "Data Source=NICO-PC\\SQLEXPRESS;Initial Catalog=gestion_materiel;Integrated Security=True";
+        static SqlConnection connection = new SqlConnection(MyConnectionString);
+        static SqlCommand cmd = connection.CreateCommand();
 
         public Form1()
         {
             InitializeComponent();//Fonction appelée en 1ère
             FillCombo();
             FillDataViewGrid();
+            FillDataViewGridIntervention();
             ToggleForm();
             FillFormCombo();
             client_initialize();//initialisation du listing des clients
             materiel_initialize();
+            intervention_initialize();
 
         }
 
@@ -37,8 +41,7 @@ namespace gestionMatos
 
         private void FillDataViewGrid()
         {
-            string MyConnectionString = "Data Source=NICO-PC\\SQLEXPRESS;Initial Catalog=gestion_materiel;Integrated Security=True";
-            using (SqlConnection connection = new SqlConnection(MyConnectionString))
+
             using (SqlCommand cmd = connection.CreateCommand())
             {
                 cmd.CommandText = "SELECT materiel.id_materiel AS 'ID', materiel.name AS 'Nom Materiel', type.nom AS 'Type Materiel',client.name AS 'Nom Client',  salle.nom_salle AS 'Salle' , etage.nom_etage AS 'Etage', batiment.nom_batiment AS 'Batiment', site.nom AS 'Site' FROM materiel " +
@@ -60,6 +63,10 @@ namespace gestionMatos
 
         }
 
+
+
+
+
         private void client_initialize()
         {
 
@@ -68,13 +75,13 @@ namespace gestionMatos
                 DataSet1TableAdapters.clientTableAdapter clientAdaptater = new DataSet1TableAdapters.clientTableAdapter();
                 DataSet1.clientDataTable tab1 = new DataSet1.clientDataTable();
                 clientAdaptater.Fill(tab1);
-                //List<ListItem> listitem = new List<ListItem>();
+             
                 int numRow = 0;
-                // int numCol = dataGrid_Listing_Client.ColumnCount; 
+        
                 foreach (DataSet1.clientRow Row in tab1.Rows)
                 {
-                    // listitem.Add(new ListItem(Row.nom, Row.id_type));
-                    dataGrid_Listing_Client.Rows.Add(); //This inserts first row, index is "0"
+                 
+                    dataGrid_Listing_Client.Rows.Add(); 
                     dataGrid_Listing_Client.Rows[numRow].Cells[0].Value = Row.id_client;
                     dataGrid_Listing_Client.Rows[numRow].Cells[1].Value = Row.name;
                     numRow++;
@@ -122,8 +129,6 @@ namespace gestionMatos
 
         private void FillFormCombo()
         {
-            // SqlConnection dbConnection = new SqlConnection(myConnectionString);
-            //SqlCommand sqlCmd = new SqlCommand();
             try
             {
                 //TYPE MATERIEL //
@@ -178,10 +183,7 @@ namespace gestionMatos
             try
             {
 
-                string MyConnectionString = "Data Source=NICO-PC\\SQLEXPRESS;Initial Catalog=gestion_materiel;Integrated Security=True";
-                using (SqlConnection connection = new SqlConnection(MyConnectionString))
-                using (SqlCommand cmd = connection.CreateCommand())
-                {
+     
                     ListItem item = (ListItem)comboBox1.SelectedItem;
                     cmd.CommandText = "SELECT materiel.id_materiel AS 'ID', materiel.name AS 'Nom Materiel', type.nom AS 'Type Materiel',client.name AS 'Nom Client',  salle.nom_salle AS 'Salle' , etage.nom_etage AS 'Etage', batiment.nom_batiment AS 'Batiment', site.nom AS 'Site' FROM materiel " +
                     "INNER JOIN type ON materiel.id_type = type.id_type " +
@@ -198,20 +200,8 @@ namespace gestionMatos
                     adap.Fill(ds);
                     dataGrid_Listing_Materiel.ReadOnly = true;
                     dataGrid_Listing_Materiel.DataSource = ds.Tables[0].DefaultView;
-                }
+               
 
-
-
-                //DataSet1TableAdapters.materielTableAdapter materielAdaptater = new DataSet1TableAdapters.materielTableAdapter();
-                //DataSet1.materielDataTable tab1 = new DataSet1.materielDataTable();
-                //// materielAdaptater.NicoProcedure(tab1, item.ID);
-                //materielAdaptater.GetMaterielByType(tab1, item.ID);
-                //List<ListItem> listitem = new List<ListItem>();
-                //foreach (DataSet1.materielRow Row in tab1.Rows)
-                //{
-                //    listitem.Add(new ListItem(Row.name, Row.id_materiel));
-                //}
-                //dataGrid_Listing_Materiel.DataSource = listitem;
             }
             catch (Exception ex)
             {
@@ -380,13 +370,8 @@ namespace gestionMatos
         private void buttonAnnuler_Click(object sender, EventArgs e)
         {
             addButtonMateriel.Enabled = true;
-            // this.formFieldNomMateriel.Refresh();
             this.formFieldNomMateriel.Text = "";
-            //   this.formFieldDescription.Text = "";
-
-            //formFieldNomMateriel.SetValue("");
-            //  ToggleForm();
-        }
+         }
 
         private void deleteButtonMateriel_Click_1(object sender, EventArgs e)
         {
@@ -394,26 +379,16 @@ namespace gestionMatos
             DataGridViewRow selectedRow = dataGrid_Listing_Materiel.Rows[selectedrowindex];
             String idMat = Convert.ToString(selectedRow.Cells[0].Value);
 
-            SqlConnection connection = new SqlConnection(MyConnectionString);
-            using (SqlCommand cmd2 = connection.CreateCommand())
-            {
+                SqlCommand cmd2 = connection.CreateCommand();
                 cmd2.CommandText = "delete from intervention where id_materiel = " + idMat;
                 SqlDataAdapter adap = new SqlDataAdapter(cmd2);
                 DataSet ds = new DataSet();
                 adap.Fill(ds);
 
-
-            }
-
-            using (SqlCommand cmd = connection.CreateCommand())
-            {
                 cmd.CommandText = "delete from materiel where id_materiel = " + idMat;
-
-                SqlDataAdapter adap = new SqlDataAdapter(cmd);
-                DataSet ds = new DataSet();
-                adap.Fill(ds);
-            }
-
+                SqlDataAdapter adap2 = new SqlDataAdapter(cmd);
+                DataSet ds2 = new DataSet();
+                adap2.Fill(ds2);
 
             FillDataViewGrid();
             MessageBox.Show("materiel supprimée avec succès");
@@ -424,12 +399,10 @@ namespace gestionMatos
             buttonModifier.Visible = true;
             buttonValider.Visible = false;
 
-
             ToggleForm();
             int selectedrowindex = dataGrid_Listing_Materiel.SelectedCells[0].RowIndex;
             DataGridViewRow selectedRow = dataGrid_Listing_Materiel.Rows[selectedrowindex];
             String nomMat = Convert.ToString(selectedRow.Cells[1].Value);
-          
             formFieldNomMateriel.Text = nomMat;
 
         }
@@ -439,15 +412,8 @@ namespace gestionMatos
 
             int selectedrowindex = dataGrid_Listing_Materiel.SelectedCells[0].RowIndex;
             DataGridViewRow selectedRow = dataGrid_Listing_Materiel.Rows[selectedrowindex];
-
-
             String idMat = Convert.ToString(selectedRow.Cells[0].Value);
 
-
-
-            SqlConnection connection = new SqlConnection(MyConnectionString);
-
-            using (SqlCommand cmd = connection.CreateCommand())
             {
                 ListItem client = (ListItem)formFieldClient.SelectedItem;
                 string name = formFieldNomMateriel.Text;
@@ -473,12 +439,63 @@ namespace gestionMatos
                 SqlDataAdapter adap = new SqlDataAdapter(cmd2);
                 DataSet ds = new DataSet();
                 adap.Fill(ds);
-                //#TODO refresh la grid intervention
             }
 
             MessageBox.Show("Matériel Modifié avec succès");
             FillDataViewGrid();
 
+        }
+
+
+
+        //INTERVETION///////////////////////////////////////////////////////////////////////////////////////////////
+
+        private void FillDataViewGridIntervention()
+        {
+
+            using (SqlCommand cmd = connection.CreateCommand())
+            {
+                cmd.CommandText = "SELECT intervention.id_intervention AS 'ID', materiel.name AS 'Materiel', client.name AS 'Client', intervention.date_plannifiee AS 'date Plannifiée', intervention.date_realisee AS 'date_realisée', intervention.commentaires AS 'Commentaires'"
+                    +"FROM intervention "
+                    +"INNER JOIN materiel ON materiel.id_materiel = intervention.id_materiel "
+                    +"INNER JOIN client ON client.id_client = materiel.id_client ";
+
+
+                SqlDataAdapter adap = new SqlDataAdapter(cmd);
+                DataSet ds = new DataSet();
+                adap.Fill(ds);
+                dataGrid_Listing_Intervention.ReadOnly = true;
+                dataGrid_Listing_Intervention.DataSource = ds.Tables[0].DefaultView;
+            }
+
+        }
+
+        private void ToggleFormIntervention()
+        {
+            if (formFieldCommentaireIntervention.Enabled == false) { formFieldCommentaireIntervention.Enabled = true; } else { formFieldCommentaireIntervention.Enabled = false; }
+            if (formFieldDateIntervention.Enabled == false) { formFieldDateIntervention.Enabled = true; } else { formFieldDateIntervention.Enabled = false; }
+            if (buttonValiderIntervention.Enabled == false) { buttonValiderIntervention.Enabled = true; } else { buttonValiderIntervention.Enabled = false; }
+           
+        }
+
+        private void dataGrid_Listing_Intervention_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            editButtonIntervention.Enabled = true;
+
+        }
+
+
+        private void intervention_initialize()
+        {
+            editButtonIntervention.Enabled = false;
+            formFieldCommentaireIntervention.Enabled = false;
+            formFieldDateIntervention.Enabled = false;
+            buttonValiderIntervention.Enabled = false;
+        }
+
+        private void editButtonIntervention_Click(object sender, EventArgs e)
+        {
+            ToggleFormIntervention();
         }
 
     }
