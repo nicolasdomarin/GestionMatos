@@ -12,8 +12,11 @@ namespace gestionMatos
 {
     public partial class Form1 : Form
     {
+
+        string MyConnectionString = "Data Source=NICO-PC\\SQLEXPRESS;Initial Catalog=gestion_materiel;Integrated Security=True";
+
         public Form1()
-        {   
+        {
             InitializeComponent();//Fonction appelée en 1ère
             FillCombo();
             FillDataViewGrid();
@@ -21,11 +24,12 @@ namespace gestionMatos
             FillFormCombo();
             client_initialize();//initialisation du listing des clients
             materiel_initialize();
-            
+
         }
 
 
-        private void materiel_initialize() {
+        private void materiel_initialize()
+        {
             editButtonMateriel.Enabled = false;
             deleteButtonMateriel.Enabled = false;
         }
@@ -38,15 +42,15 @@ namespace gestionMatos
             using (SqlCommand cmd = connection.CreateCommand())
             {
                 cmd.CommandText = "SELECT materiel.id_materiel AS 'ID', materiel.name AS 'Nom Materiel', type.nom AS 'Type Materiel',client.name AS 'Nom Client',  salle.nom_salle AS 'Salle' , etage.nom_etage AS 'Etage', batiment.nom_batiment AS 'Batiment', site.nom AS 'Site' FROM materiel " +
-                "INNER JOIN type ON materiel.id_type = type.id_type "+ 
-                "INNER JOIN client ON materiel.id_client = client.id_client "+
-                "INNER JOIN intervention ON materiel.id_materiel = intervention.id_materiel "+
-                "INNER JOIN salle ON intervention.id_salle = salle.id_salle "+
-                "INNER JOIN etage ON salle.id_salle = etage.id_etage "+
-                "INNER JOIN dbo.batiment ON batiment.id_batiment = etage.id_batiment "+
+                "INNER JOIN type ON materiel.id_type = type.id_type " +
+                "INNER JOIN client ON materiel.id_client = client.id_client " +
+                "INNER JOIN intervention ON materiel.id_materiel = intervention.id_materiel " +
+                "INNER JOIN salle ON intervention.id_salle = salle.id_salle " +
+                "INNER JOIN etage ON salle.id_salle = etage.id_etage " +
+                "INNER JOIN dbo.batiment ON batiment.id_batiment = etage.id_batiment " +
                 "INNER JOIN dbo.site ON site.id_site = batiment.id_site";
 
- 
+
                 SqlDataAdapter adap = new SqlDataAdapter(cmd);
                 DataSet ds = new DataSet();
                 adap.Fill(ds);
@@ -54,7 +58,7 @@ namespace gestionMatos
                 dataGrid_Listing_Materiel.DataSource = ds.Tables[0].DefaultView;
             }
 
-     }
+        }
 
         private void client_initialize()
         {
@@ -66,7 +70,7 @@ namespace gestionMatos
                 clientAdaptater.Fill(tab1);
                 //List<ListItem> listitem = new List<ListItem>();
                 int numRow = 0;
-               // int numCol = dataGrid_Listing_Client.ColumnCount; 
+                // int numCol = dataGrid_Listing_Client.ColumnCount; 
                 foreach (DataSet1.clientRow Row in tab1.Rows)
                 {
                     // listitem.Add(new ListItem(Row.nom, Row.id_type));
@@ -94,8 +98,6 @@ namespace gestionMatos
 
         private void FillCombo()
         {
-            // SqlConnection dbConnection = new SqlConnection(myConnectionString);
-            //SqlCommand sqlCmd = new SqlCommand();
             try
             {
                 DataSet1TableAdapters.typeTableAdapter typeAdaptater = new DataSet1TableAdapters.typeTableAdapter();
@@ -108,7 +110,7 @@ namespace gestionMatos
                     listitem.Add(new ListItem(Row.nom, Row.id_type));
                 }
                 comboBox1.DataSource = listitem;
-             
+
             }
             catch (Exception ex)
             {
@@ -161,7 +163,7 @@ namespace gestionMatos
                 }
                 formFieldSite.DataSource = listitem3;
 
-        }
+            }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
@@ -175,18 +177,41 @@ namespace gestionMatos
         {
             try
             {
-                ListItem item = (ListItem)comboBox1.SelectedItem;
-              
-                DataSet1TableAdapters.materielTableAdapter materielAdaptater = new DataSet1TableAdapters.materielTableAdapter();
-                DataSet1.materielDataTable tab1 = new DataSet1.materielDataTable();
-                // materielAdaptater.NicoProcedure(tab1, item.ID);
-                materielAdaptater.GetMaterielByType(tab1, item.ID);
-                List<ListItem> listitem = new List<ListItem>();
-                foreach (DataSet1.materielRow Row in tab1.Rows)
+
+                string MyConnectionString = "Data Source=NICO-PC\\SQLEXPRESS;Initial Catalog=gestion_materiel;Integrated Security=True";
+                using (SqlConnection connection = new SqlConnection(MyConnectionString))
+                using (SqlCommand cmd = connection.CreateCommand())
                 {
-                    listitem.Add(new ListItem(Row.name, Row.id_materiel));
+                    ListItem item = (ListItem)comboBox1.SelectedItem;
+                    cmd.CommandText = "SELECT materiel.id_materiel AS 'ID', materiel.name AS 'Nom Materiel', type.nom AS 'Type Materiel',client.name AS 'Nom Client',  salle.nom_salle AS 'Salle' , etage.nom_etage AS 'Etage', batiment.nom_batiment AS 'Batiment', site.nom AS 'Site' FROM materiel " +
+                    "INNER JOIN type ON materiel.id_type = type.id_type " +
+                    "INNER JOIN client ON materiel.id_client = client.id_client " +
+                    "INNER JOIN intervention ON materiel.id_materiel = intervention.id_materiel " +
+                    "INNER JOIN salle ON intervention.id_salle = salle.id_salle " +
+                    "INNER JOIN etage ON salle.id_salle = etage.id_etage " +
+                    "INNER JOIN dbo.batiment ON batiment.id_batiment = etage.id_batiment " +
+                    "INNER JOIN dbo.site ON site.id_site = batiment.id_site WHERE materiel.id_type = " + item.ID;
+
+
+                    SqlDataAdapter adap = new SqlDataAdapter(cmd);
+                    DataSet ds = new DataSet();
+                    adap.Fill(ds);
+                    dataGrid_Listing_Materiel.ReadOnly = true;
+                    dataGrid_Listing_Materiel.DataSource = ds.Tables[0].DefaultView;
                 }
-                dataGrid_Listing_Materiel.DataSource = listitem;
+
+
+
+                //DataSet1TableAdapters.materielTableAdapter materielAdaptater = new DataSet1TableAdapters.materielTableAdapter();
+                //DataSet1.materielDataTable tab1 = new DataSet1.materielDataTable();
+                //// materielAdaptater.NicoProcedure(tab1, item.ID);
+                //materielAdaptater.GetMaterielByType(tab1, item.ID);
+                //List<ListItem> listitem = new List<ListItem>();
+                //foreach (DataSet1.materielRow Row in tab1.Rows)
+                //{
+                //    listitem.Add(new ListItem(Row.name, Row.id_materiel));
+                //}
+                //dataGrid_Listing_Materiel.DataSource = listitem;
             }
             catch (Exception ex)
             {
@@ -205,23 +230,23 @@ namespace gestionMatos
             if (formFieldBatiment.Enabled == false) { formFieldBatiment.Enabled = true; } else { formFieldBatiment.Enabled = false; }
             if (formFieldEtage.Enabled == false) { formFieldEtage.Enabled = true; } else { formFieldEtage.Enabled = false; }
             if (formFieldSalle.Enabled == false) { formFieldSalle.Enabled = true; } else { formFieldSalle.Enabled = false; }
-            if (formFieldDescription.Enabled == false) { formFieldDescription.Enabled = true; } else { formFieldDescription.Enabled = false; }
+            //  if (formFieldDescription.Enabled == false) { formFieldDescription.Enabled = true; } else { formFieldDescription.Enabled = false; }
             if (buttonValider.Enabled == false) { buttonValider.Enabled = true; } else { buttonValider.Enabled = false; }
             if (buttonAnnuler.Enabled == false) { buttonAnnuler.Enabled = true; } else { buttonAnnuler.Enabled = false; }
-   
+
         }
 
 
         private void editButtonMateriel_Click(object sender, EventArgs e)
         {
             ToggleForm();
-      
+
         }
 
         private void deleteButtonMateriel_Click(object sender, EventArgs e)
         {
             ToggleForm();
-           
+
         }
 
         private void buttonValider_Click(object sender, EventArgs e)
@@ -237,28 +262,33 @@ namespace gestionMatos
             ListItem type_materiel = (ListItem)formFieldTypeMateriel.SelectedItem;
             ListItem salle = (ListItem)formFieldSalle.SelectedItem;
             string name_materiel = formFieldNomMateriel.Text;
-            string description = formFieldDescription.Text;
-            materielAdaptater.InsertMateriel(client.ID, 1, name_materiel, description, type_materiel.ID);
+            string description = "";
+            string commentaires = "";
+            materielAdaptater.InsertMaterielAndIntervention(tab1, client.ID, name_materiel, description, type_materiel.ID, commentaires, salle.ID);
 
-            MessageBox.Show("Materiel Crée Avec Succès");
+            MessageBox.Show("Materiel crée avec succès");
+            FillDataViewGrid();
+            formFieldNomMateriel.Text = "";
             //materielAdaptater.InsertMateriel(tab1,id_materiel,id_client,id_intervention,name_materiel,description , id_type);
 
         }
 
         private void addButtonMateriel_Click(object sender, EventArgs e)
         {
+            buttonModifier.Visible = false;
+            buttonValider.Visible = true;
             ToggleForm();
-            
+
         }
 
         private void formFieldSite_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-    
+
             try
             {
-                
-                if (formFieldSite.SelectedItem == "") return; 
+
+                if (formFieldSite.SelectedItem.ToString() == "") return;
                 ListItem item = (ListItem)formFieldSite.SelectedItem;
                 DataSet1TableAdapters.batimentTableAdapter batimentAdaptater = new DataSet1TableAdapters.batimentTableAdapter();
                 DataSet1.batimentDataTable tab1 = new DataSet1.batimentDataTable();
@@ -268,10 +298,10 @@ namespace gestionMatos
                 {
                     listitem.Add(new ListItem(Row.nom_batiment, Row.id_batiment));
                 }
-        
-              
-                   formFieldBatiment.DataSource = listitem;
-                     
+
+
+                formFieldBatiment.DataSource = listitem;
+
             }
             catch (Exception ex)
             {
@@ -285,9 +315,9 @@ namespace gestionMatos
 
             try
             {
-           
-                if (formFieldBatiment.SelectedItem == "") return; 
         
+                if ( formFieldBatiment.SelectedItem == "") return;
+
                 ListItem item = (ListItem)formFieldBatiment.SelectedItem;
                 DataSet1TableAdapters.etageTableAdapter batimentAdaptater = new DataSet1TableAdapters.etageTableAdapter();
                 DataSet1.etageDataTable tab1 = new DataSet1.etageDataTable();
@@ -301,9 +331,9 @@ namespace gestionMatos
 
 
                 formFieldEtage.DataSource = listitem;
-               
-           }
-            
+
+            }
+
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
@@ -343,20 +373,113 @@ namespace gestionMatos
 
         private void dataGrid_Listing_Materiel_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            MessageBox.Show("test");
+            editButtonMateriel.Enabled = true;
+            deleteButtonMateriel.Enabled = true;
         }
 
         private void buttonAnnuler_Click(object sender, EventArgs e)
         {
             addButtonMateriel.Enabled = true;
-           // this.formFieldNomMateriel.Refresh();
+            // this.formFieldNomMateriel.Refresh();
             this.formFieldNomMateriel.Text = "";
-            this.formFieldDescription.Text = "";
-           
+            //   this.formFieldDescription.Text = "";
+
             //formFieldNomMateriel.SetValue("");
-          //  ToggleForm();
+            //  ToggleForm();
         }
 
-   
+        private void deleteButtonMateriel_Click_1(object sender, EventArgs e)
+        {
+            int selectedrowindex = dataGrid_Listing_Materiel.SelectedCells[0].RowIndex;
+            DataGridViewRow selectedRow = dataGrid_Listing_Materiel.Rows[selectedrowindex];
+            String idMat = Convert.ToString(selectedRow.Cells[0].Value);
+
+            SqlConnection connection = new SqlConnection(MyConnectionString);
+            using (SqlCommand cmd2 = connection.CreateCommand())
+            {
+                cmd2.CommandText = "delete from intervention where id_materiel = " + idMat;
+                SqlDataAdapter adap = new SqlDataAdapter(cmd2);
+                DataSet ds = new DataSet();
+                adap.Fill(ds);
+
+
+            }
+
+            using (SqlCommand cmd = connection.CreateCommand())
+            {
+                cmd.CommandText = "delete from materiel where id_materiel = " + idMat;
+
+                SqlDataAdapter adap = new SqlDataAdapter(cmd);
+                DataSet ds = new DataSet();
+                adap.Fill(ds);
+            }
+
+
+            FillDataViewGrid();
+            MessageBox.Show("materiel supprimée avec succès");
+        }
+
+        private void editButtonMateriel_Click_1(object sender, EventArgs e)
+        {
+            buttonModifier.Visible = true;
+            buttonValider.Visible = false;
+
+
+            ToggleForm();
+            int selectedrowindex = dataGrid_Listing_Materiel.SelectedCells[0].RowIndex;
+            DataGridViewRow selectedRow = dataGrid_Listing_Materiel.Rows[selectedrowindex];
+            String nomMat = Convert.ToString(selectedRow.Cells[1].Value);
+          
+            formFieldNomMateriel.Text = nomMat;
+
+        }
+
+        private void editButtonForm_Click(object sender, EventArgs e)
+        {
+
+            int selectedrowindex = dataGrid_Listing_Materiel.SelectedCells[0].RowIndex;
+            DataGridViewRow selectedRow = dataGrid_Listing_Materiel.Rows[selectedrowindex];
+
+
+            String idMat = Convert.ToString(selectedRow.Cells[0].Value);
+
+
+
+            SqlConnection connection = new SqlConnection(MyConnectionString);
+
+            using (SqlCommand cmd = connection.CreateCommand())
+            {
+                ListItem client = (ListItem)formFieldClient.SelectedItem;
+                string name = formFieldNomMateriel.Text;
+                string description = "";
+                ListItem type = (ListItem)formFieldTypeMateriel.SelectedItem;
+
+                cmd.CommandText = "UPDATE materiel SET id_client ="+ client.ID+", name = @name, description = @description, id_type = "+type.ID
+                +" WHERE id_materiel = " + idMat;
+                cmd.Parameters.AddWithValue("name", name);
+                cmd.Parameters.AddWithValue("description", description);
+                    //, name =" + name + " , description = " + description + " , id_type = " + type.ID + " WHERE id_materiel =" + idMat;
+
+                SqlDataAdapter adap = new SqlDataAdapter(cmd);
+                DataSet ds = new DataSet();
+                adap.Fill(ds);
+            }
+
+            using (SqlCommand cmd2 = connection.CreateCommand())
+            {
+                ListItem salle = (ListItem)formFieldSalle.SelectedItem;
+                cmd2.CommandText = "UPDATE intervention SET id_salle =" + salle.ID
+                    + " where id_materiel =" + idMat;
+                SqlDataAdapter adap = new SqlDataAdapter(cmd2);
+                DataSet ds = new DataSet();
+                adap.Fill(ds);
+                //#TODO refresh la grid intervention
+            }
+
+            MessageBox.Show("Matériel Modifié avec succès");
+            FillDataViewGrid();
+
+        }
+
     }
 }
