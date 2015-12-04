@@ -36,13 +36,12 @@
             this.groupBoxAccueilIntervention = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.listLastIntervention = new System.Windows.Forms.ListBox();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.listNextIntervention = new System.Windows.Forms.ListBox();
             this.onglet_clients = new System.Windows.Forms.TabPage();
             this.searchClient = new System.Windows.Forms.Button();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.groupBoxClient = new System.Windows.Forms.GroupBox();
             this.buttonValiderClient = new System.Windows.Forms.Button();
             this.denominationClient = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -54,6 +53,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.dataGrid_Listing_Client = new System.Windows.Forms.DataGridView();
             this.onglet_interventions = new System.Windows.Forms.TabPage();
+            this.comboIntervention = new System.Windows.Forms.ComboBox();
             this.editButtonIntervention = new System.Windows.Forms.Button();
             this.dataGrid_Listing_Intervention = new System.Windows.Forms.DataGridView();
             this.label7 = new System.Windows.Forms.Label();
@@ -118,11 +118,18 @@
             this.button16 = new System.Windows.Forms.Button();
             this.button17 = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.panelLogin = new System.Windows.Forms.Panel();
+            this.loginTxt = new System.Windows.Forms.TextBox();
+            this.mdpUserInsert = new System.Windows.Forms.TextBox();
+            this.buttonConnect = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
             this.tabControl1Onglets.SuspendLayout();
             this.onglet_accueil.SuspendLayout();
             this.groupBoxAccueilIntervention.SuspendLayout();
             this.onglet_clients.SuspendLayout();
-            this.groupBox4.SuspendLayout();
+            this.groupBoxClient.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid_Listing_Client)).BeginInit();
             this.onglet_interventions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid_Listing_Intervention)).BeginInit();
@@ -135,6 +142,7 @@
             this.groupBox3.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox7.SuspendLayout();
+            this.panelLogin.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1Onglets
@@ -169,9 +177,9 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(625, 140);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(121, 13);
+            this.label3.Size = new System.Drawing.Size(130, 13);
             this.label3.TabIndex = 7;
-            this.label3.Text = "Interventions retardées :";
+            this.label3.Text = "Interventions retardées : 0";
             // 
             // dateTimePicker1
             // 
@@ -195,7 +203,6 @@
             this.groupBoxAccueilIntervention.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBoxAccueilIntervention.Controls.Add(this.label2);
             this.groupBoxAccueilIntervention.Controls.Add(this.label1);
-            this.groupBoxAccueilIntervention.Controls.Add(this.linkLabel2);
             this.groupBoxAccueilIntervention.Controls.Add(this.listLastIntervention);
             this.groupBoxAccueilIntervention.Controls.Add(this.linkLabel1);
             this.groupBoxAccueilIntervention.Controls.Add(this.listNextIntervention);
@@ -224,17 +231,6 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "Les cinq dernières interventions";
             // 
-            // linkLabel2
-            // 
-            this.linkLabel2.AutoSize = true;
-            this.linkLabel2.Location = new System.Drawing.Point(305, 274);
-            this.linkLabel2.Name = "linkLabel2";
-            this.linkLabel2.Size = new System.Drawing.Size(48, 13);
-            this.linkLabel2.TabIndex = 4;
-            this.linkLabel2.TabStop = true;
-            this.linkLabel2.Text = "Voir tous";
-            this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
-            // 
             // listLastIntervention
             // 
             this.listLastIntervention.FormattingEnabled = true;
@@ -247,7 +243,7 @@
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(100, 274);
+            this.linkLabel1.Location = new System.Drawing.Point(230, 274);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(48, 13);
             this.linkLabel1.TabIndex = 3;
@@ -267,7 +263,7 @@
             // onglet_clients
             // 
             this.onglet_clients.Controls.Add(this.searchClient);
-            this.onglet_clients.Controls.Add(this.groupBox4);
+            this.onglet_clients.Controls.Add(this.groupBoxClient);
             this.onglet_clients.Controls.Add(this.buttonDeleteClient);
             this.onglet_clients.Controls.Add(this.buttonEditClient);
             this.onglet_clients.Controls.Add(this.buttonAddClient);
@@ -293,23 +289,23 @@
             this.searchClient.UseVisualStyleBackColor = true;
             this.searchClient.Click += new System.EventHandler(this.searchClient_Click);
             // 
-            // groupBox4
+            // groupBoxClient
             // 
-            this.groupBox4.Controls.Add(this.buttonValiderClient);
-            this.groupBox4.Controls.Add(this.denominationClient);
-            this.groupBox4.Controls.Add(this.label8);
-            this.groupBox4.Location = new System.Drawing.Point(440, 306);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(411, 184);
-            this.groupBox4.TabIndex = 7;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Formulaire";
+            this.groupBoxClient.Controls.Add(this.buttonValiderClient);
+            this.groupBoxClient.Controls.Add(this.denominationClient);
+            this.groupBoxClient.Controls.Add(this.label8);
+            this.groupBoxClient.Location = new System.Drawing.Point(440, 306);
+            this.groupBoxClient.Name = "groupBoxClient";
+            this.groupBoxClient.Size = new System.Drawing.Size(411, 184);
+            this.groupBoxClient.TabIndex = 7;
+            this.groupBoxClient.TabStop = false;
+            this.groupBoxClient.Text = "Formulaire";
             // 
             // buttonValiderClient
             // 
-            this.buttonValiderClient.Location = new System.Drawing.Point(205, 97);
+            this.buttonValiderClient.Location = new System.Drawing.Point(217, 118);
             this.buttonValiderClient.Name = "buttonValiderClient";
-            this.buttonValiderClient.Size = new System.Drawing.Size(107, 17);
+            this.buttonValiderClient.Size = new System.Drawing.Size(95, 22);
             this.buttonValiderClient.TabIndex = 6;
             this.buttonValiderClient.Text = "Valider";
             this.buttonValiderClient.UseVisualStyleBackColor = true;
@@ -391,15 +387,18 @@
             // 
             this.dataGrid_Listing_Client.AllowUserToAddRows = false;
             this.dataGrid_Listing_Client.AllowUserToDeleteRows = false;
+            this.dataGrid_Listing_Client.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGrid_Listing_Client.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGrid_Listing_Client.Location = new System.Drawing.Point(130, 139);
+            this.dataGrid_Listing_Client.Location = new System.Drawing.Point(40, 139);
             this.dataGrid_Listing_Client.Name = "dataGrid_Listing_Client";
             this.dataGrid_Listing_Client.ReadOnly = true;
-            this.dataGrid_Listing_Client.Size = new System.Drawing.Size(243, 351);
+            this.dataGrid_Listing_Client.Size = new System.Drawing.Size(333, 351);
             this.dataGrid_Listing_Client.TabIndex = 0;
+            this.dataGrid_Listing_Client.VirtualMode = true;
             // 
             // onglet_interventions
             // 
+            this.onglet_interventions.Controls.Add(this.comboIntervention);
             this.onglet_interventions.Controls.Add(this.editButtonIntervention);
             this.onglet_interventions.Controls.Add(this.dataGrid_Listing_Intervention);
             this.onglet_interventions.Controls.Add(this.label7);
@@ -411,6 +410,16 @@
             this.onglet_interventions.TabIndex = 2;
             this.onglet_interventions.Text = "Interventions";
             this.onglet_interventions.UseVisualStyleBackColor = true;
+            // 
+            // comboIntervention
+            // 
+            this.comboIntervention.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboIntervention.FormattingEnabled = true;
+            this.comboIntervention.Location = new System.Drawing.Point(129, 71);
+            this.comboIntervention.Name = "comboIntervention";
+            this.comboIntervention.Size = new System.Drawing.Size(152, 21);
+            this.comboIntervention.TabIndex = 9;
+            this.comboIntervention.SelectedIndexChanged += new System.EventHandler(this.comboClient_SelectedIndexChanged);
             // 
             // editButtonIntervention
             // 
@@ -571,6 +580,8 @@
             // 
             // dataGrid_Listing_Materiel
             // 
+            this.dataGrid_Listing_Materiel.AllowUserToAddRows = false;
+            this.dataGrid_Listing_Materiel.AllowUserToDeleteRows = false;
             this.dataGrid_Listing_Materiel.Location = new System.Drawing.Point(6, 117);
             this.dataGrid_Listing_Materiel.Name = "dataGrid_Listing_Materiel";
             this.dataGrid_Listing_Materiel.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
@@ -581,6 +592,7 @@
             // 
             // comboBox1
             // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(153, 90);
             this.comboBox1.Name = "comboBox1";
@@ -616,7 +628,7 @@
             // 
             // buttonModifier
             // 
-            this.buttonModifier.Location = new System.Drawing.Point(742, 153);
+            this.buttonModifier.Location = new System.Drawing.Point(742, 124);
             this.buttonModifier.Name = "buttonModifier";
             this.buttonModifier.Size = new System.Drawing.Size(75, 23);
             this.buttonModifier.TabIndex = 23;
@@ -1055,14 +1067,80 @@
             this.button17.Text = "Modifier";
             this.button17.UseVisualStyleBackColor = true;
             // 
+            // panelLogin
+            // 
+            this.panelLogin.Controls.Add(this.label22);
+            this.panelLogin.Controls.Add(this.label9);
+            this.panelLogin.Controls.Add(this.label4);
+            this.panelLogin.Controls.Add(this.buttonConnect);
+            this.panelLogin.Controls.Add(this.mdpUserInsert);
+            this.panelLogin.Controls.Add(this.loginTxt);
+            this.panelLogin.Location = new System.Drawing.Point(6, 3);
+            this.panelLogin.Name = "panelLogin";
+            this.panelLogin.Size = new System.Drawing.Size(1017, 578);
+            this.panelLogin.TabIndex = 1;
+            // 
+            // loginTxt
+            // 
+            this.loginTxt.Location = new System.Drawing.Point(472, 143);
+            this.loginTxt.Name = "loginTxt";
+            this.loginTxt.Size = new System.Drawing.Size(166, 20);
+            this.loginTxt.TabIndex = 0;
+            // 
+            // mdpUserInsert
+            // 
+            this.mdpUserInsert.Location = new System.Drawing.Point(472, 223);
+            this.mdpUserInsert.Name = "mdpUserInsert";
+            this.mdpUserInsert.Size = new System.Drawing.Size(166, 20);
+            this.mdpUserInsert.TabIndex = 1;
+            // 
+            // buttonConnect
+            // 
+            this.buttonConnect.Location = new System.Drawing.Point(518, 313);
+            this.buttonConnect.Name = "buttonConnect";
+            this.buttonConnect.Size = new System.Drawing.Size(120, 23);
+            this.buttonConnect.TabIndex = 3;
+            this.buttonConnect.Text = "Se connecter";
+            this.buttonConnect.UseVisualStyleBackColor = true;
+            this.buttonConnect.Click += new System.EventHandler(this.buttonConnect_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(349, 146);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(42, 13);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "Login : ";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(353, 226);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(77, 13);
+            this.label9.TabIndex = 5;
+            this.label9.Text = "Mot de passe :";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.Location = new System.Drawing.Point(438, 54);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(201, 31);
+            this.label22.TabIndex = 6;
+            this.label22.Text = "Authentification";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1035, 593);
+            this.Controls.Add(this.panelLogin);
             this.Controls.Add(this.tabControl1Onglets);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Logiciel Gestion Matos";
             this.tabControl1Onglets.ResumeLayout(false);
             this.onglet_accueil.ResumeLayout(false);
             this.onglet_accueil.PerformLayout();
@@ -1070,8 +1148,8 @@
             this.groupBoxAccueilIntervention.PerformLayout();
             this.onglet_clients.ResumeLayout(false);
             this.onglet_clients.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
+            this.groupBoxClient.ResumeLayout(false);
+            this.groupBoxClient.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid_Listing_Client)).EndInit();
             this.onglet_interventions.ResumeLayout(false);
             this.onglet_interventions.PerformLayout();
@@ -1089,6 +1167,8 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
+            this.panelLogin.ResumeLayout(false);
+            this.panelLogin.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1099,7 +1179,6 @@
         private System.Windows.Forms.TabPage onglet_accueil;
         private System.Windows.Forms.Label titre_accueil;
         private System.Windows.Forms.GroupBox groupBoxAccueilIntervention;
-        private System.Windows.Forms.LinkLabel linkLabel2;
         private System.Windows.Forms.ListBox listLastIntervention;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.ListBox listNextIntervention;
@@ -1153,7 +1232,7 @@
         private System.Windows.Forms.Button buttonAnnuler;
         private System.Windows.Forms.Button buttonModifier;
         private System.Windows.Forms.Button searchClient;
-        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.GroupBox groupBoxClient;
         private System.Windows.Forms.TextBox denominationClient;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button buttonDeleteClient;
@@ -1185,6 +1264,14 @@
         private Microsoft.VisualBasic.PowerPacks.LineShape lineShape2;
         private System.Windows.Forms.DateTimePicker dateTimePickerIntervention;
         private System.Windows.Forms.Button buttonValiderClient;
+        private System.Windows.Forms.ComboBox comboIntervention;
+        private System.Windows.Forms.Panel panelLogin;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button buttonConnect;
+        private System.Windows.Forms.TextBox mdpUserInsert;
+        private System.Windows.Forms.TextBox loginTxt;
+        private System.Windows.Forms.Label label22;
     }
 }
 
